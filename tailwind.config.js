@@ -11,8 +11,8 @@ module.exports = {
         creamdark: '#f5f1ee',
         ink: '#161616',
         red: {
-          DEFAULT: '#FE2B2B',
-          dark: '#E01F1F',
+          DEFAULT: '#0768e7',
+          dark: '#0768e7',
         },
       },
       fontFamily: {
