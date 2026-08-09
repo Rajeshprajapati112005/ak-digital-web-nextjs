@@ -20,7 +20,10 @@ body {
   animation-play-state: paused;
 }
 
-
+.leading-relaxed{
+  font-size: 15px;
+  font-style: italic;
+}
 
 .container-px {
   @apply px-6 md:px-10 lg:px-16;

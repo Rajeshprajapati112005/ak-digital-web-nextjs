@@ -7,43 +7,44 @@ const projects = [
     name: 'Hiveschool',
     tag: 'Web Design',
     href: '/hiveschool',
-    img: 'https://framerusercontent.com/images/ZPlCmDEX2rl9MgEvQZN2xjQoj9g.png?width=4797&height=3226',
+    img: 'five.jpg',
   },
   {
     name: 'Hyperleap-ai',
     tag: 'Web Design-dashboard',
     href: '/hyperleapai',
-    img: 'https://framerusercontent.com/images/d2RzC00oVUxvbpu2SJhldFTVU.png?width=2560&height=1440',
+    img: '4.png',
   },
   {
     name: 'Docdune',
     tag: 'Branding',
     href: '/docdune',
-    img: 'https://framerusercontent.com/images/63UdCYtaP6lQSvdpc5yzOVlPMQw.png?width=4794&height=4050',
+    img: 'six.png',
   },
   {
     name: 'Sportaye',
     tag: 'Web Design',
     href: '/sportaye',
-    img: 'https://framerusercontent.com/images/52s7kuRUnpuPH0WCRDeWvubk8.png?width=7616&height=4280',
+    img: '2.jpg',
   },
   {
     name: 'Nocage',
     tag: 'Web Design and branding',
     href: '/nocage',
-    img: 'https://framerusercontent.com/images/4UZfLmIVY1xmR38xXmHKmd9pPwI.png?width=16384&height=9217',
+    img: '3.png',
   },
   {
     name: 'Caire',
     tag: 'Web Design',
     href: '/caire',
-    img: 'https://framerusercontent.com/images/XZxN9JFEaqcZPXUly7Nj4G0qXo.png?width=3488&height=1920',
+    img: 'three.png',
   },
 ]
 
 export default function Portfolio() {
   return (
-    <section id="projects-1" className="max-w-5xl mx-auto py-16 px-6 text-center">
+    <section id="projects-1" className=" bg-[#f5f1ee]  py-16 px-6 text-center">
+        <div className="container-px text-center">
       <motion.h2
         initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -70,7 +71,7 @@ export default function Portfolio() {
                 <img
                   src={p.img}
                   alt={p.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover object-cover object-top transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
             </div>
@@ -80,6 +81,7 @@ export default function Portfolio() {
             </div>
           </motion.a>
         ))}
+      </div>
       </div>
     </section>
   )

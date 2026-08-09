@@ -25,7 +25,8 @@ const stats = [
 
 export default function Stats() {
   return (
-    <section id="stats" className="max-w-5xl mx-auto py-20 px-6 text-center">
+    <section id="stats" className="  bg-[#f5f1ee]  py-20 px-6 text-center">
+      <div className="container-px max-w-5xl mx-auto text-center">
       <motion.h2
         initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -57,6 +58,7 @@ export default function Stats() {
             <p className="text-sm text-black/60 mt-2">{s.desc}</p>
           </motion.div>
         ))}
+      </div>
       </div>
     </section>
   )
