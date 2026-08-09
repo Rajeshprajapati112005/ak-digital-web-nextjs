@@ -16,6 +16,10 @@ body {
   color: #161616;
 }
 
+.marquee-mask:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
 
 
 .container-px {
