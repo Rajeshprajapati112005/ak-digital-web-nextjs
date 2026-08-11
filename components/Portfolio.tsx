@@ -4,39 +4,39 @@ import { motion } from 'framer-motion'
 
 const projects = [
   {
-    name: 'Hiveschool',
-    tag: 'Web Design',
-    href: '/hiveschool',
+    name: 'Star Struckbysl',
+    tag: 'Beauty & Cosmetics 💄',
+    href: 'https://www.starstruckbysl.com/',
     img: 'five.jpg',
   },
   {
-    name: 'Hyperleap-ai',
-    tag: 'Web Design-dashboard',
-    href: '/hyperleapai',
+    name: 'Bombay Shirts',
+    tag: 'Clothing & Fashion 👕',
+    href: 'https://www.bombayshirts.com/',
     img: '4.png',
   },
   {
-    name: 'Docdune',
-    tag: 'Branding',
-    href: '/docdune',
+    name: 'Raj Bajoria',
+    tag: 'Business & Entrepreneurship 👔',
+    href: 'https://rajbajoria.com/',
     img: 'six.png',
   },
   {
-    name: 'Sportaye',
-    tag: 'Web Design',
-    href: '/sportaye',
+    name: 'Mister Photo',
+    tag: 'Photography & Videography 📸',
+    href: 'https://misterphoto.in/',
     img: '2.jpg',
   },
   {
-    name: 'Nocage',
-    tag: 'Web Design and branding',
-    href: '/nocage',
+    name: 'Krivansh',
+    tag: 'Jewellery & Accessories 💎',
+    href: 'https://www.krivansh.com/',
     img: '3.png',
   },
   {
-    name: 'Caire',
-    tag: 'Web Design',
-    href: '/caire',
+    name: 'Get My Mettle',
+    tag: 'Health & Fitness Supplements 🥤',
+    href: 'https://getmymettle.com/',
     img: 'three.png',
   },
 ]
@@ -60,6 +60,7 @@ export default function Portfolio() {
           <motion.a
             key={p.name}
             href={p.href}
+             target="_blank"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -76,8 +77,8 @@ export default function Portfolio() {
               </div>
             </div>
             <div className="px-6 mt-1">
-              <p className="text-xs text-neutral-500">{p.tag}</p>
-              <p className="font-semibold text-lg mt-0.5">{p.name}</p>
+              <p className="text-xs  text-neutral-500">{p.tag}</p>
+              <p className="font-semibold font-serif  text-lg mt-0.5">{p.name}</p>
             </div>
           </motion.a>
         ))}

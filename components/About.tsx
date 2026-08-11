@@ -1,91 +1,237 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { Sparkles, Lightbulb } from 'lucide-react'
+
 
 const team = [
   {
-    name: 'Satvik Saksena',
+    name: 'Pradeep Prajapati',
     role: 'Co-founder',
-    tag: 'Strategy Genius',
-    img: 'https://framerusercontent.com/images/TucqrAHH546YbtfS2xPf3aNxIn4.png?width=16384&height=10853',
+    tag: 'STRATEGY GENIUS',
+    icon: 'sparkles',
+    img: 'pp.jpg',
     linkedin: 'https://www.linkedin.com/in/satvik-saksena/',
+    twitter: 'https://twitter.com/',
   },
   {
-    name: 'Manan Ahuja',
+    name: 'Rajesh Prajapati',
     role: 'Co-Founder',
-    tag: 'Creative Wizard',
-    img: 'https://framerusercontent.com/images/8PrgF8rbWEjfLAimcMBjBp5WVvk.png?width=16384&height=10852',
+    tag: 'CREATIVE WIZARD',
+    icon: 'bulb',
+    img: 'rp.jpg',
     linkedin: 'https://www.linkedin.com/in/mananahujaaa/',
+    twitter: 'https://twitter.com/',
   },
 ]
 
 export default function About() {
   return (
-    <section id="about" className="max-w-5xl mx-auto py-16 px-6">
-      <p className="section-label justify-center flex">
-        <span className="bg-[#eef1f4] rounded-full px-4 py-1.5">About us</span>
-      </p>
-      <motion.h2
+    <section id="about" className="about-section">
+
+      {/* ABOUT LABEL */}
+      <motion.div
+        className="about-label-wrapper"
         initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.5 }}
-        className="text-2xl md:text-[24px] mt-4 text-center max-w-2xl mx-auto leading-snug text-black/80 font-medium"
       >
-        We began as a small group of creators with a <strong className="text-black">big</strong> belief:
-        great ideas deserve <strong className="text-black">bold</strong> execution. From coffee-fueled
-        brainstorms to a thriving digital Team, our mission remains simple, craft{' '}
-        <strong className="text-black">impactful</strong> solutions that help brands{' '}
-        <strong className="text-black">stand</strong> out. With{' '}
-        <strong className="text-black">strategy, design, and a touch of magic</strong>, we bring ideas to
-        life. Let&apos;s make something amazing together.
+        <span className="about-label">
+          <span className="about-label-icon">
+            <Sparkles size={11} />
+          </span>
+          About us
+        </span>
+      </motion.div>
+
+      {/* INTRO */}
+      <motion.h2
+        className="about-heading"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{
+          duration: 0.7,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+      >
+        We began as a small group of creators with a{' '}
+        <strong>big belief:</strong> great ideas deserve{' '}
+        <strong>bold execution.</strong> From coffee-fueled
+        brainstorms to a thriving digital Team, our mission remains
+        simple, craft <strong>impactful</strong> solutions that help
+        brands <strong>stand</strong> out. With{' '}
+        <strong>strategy, design, and a touch of magic</strong>, we
+        bring ideas to life. Let&apos;s make something amazing
+        together.
       </motion.h2>
 
-      <div className="grid sm:grid-cols-4 gap-4 mt-10">
-        {team.map((m) => (
-          <div key={m.name} className="sm:col-span-1 rounded-[30px] overflow-hidden bg-[#f8faf5]">
-            <div className="relative">
-              <div className="absolute top-2.5 left-2.5 z-10 bg-red text-white text-xs rounded-full px-3 py-1.5 flex items-center gap-1">
-                {m.tag}
+      {/* TEAM */}
+      <div className="about-grid">
+
+        {team.map((member, index) => (
+          <motion.div
+            key={member.name}
+            className="team-card"
+            initial={{
+              opacity: 0,
+              y: 35,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+              margin: '-60px',
+            }}
+            transition={{
+              duration: 0.6,
+              delay: index * 0.12,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
+
+            {/* IMAGE */}
+            <div className="team-image-wrapper">
+
+              {/* TAG */}
+              <div className="team-tag">
+                {member.icon === 'sparkles' ? (
+                  <Sparkles size={12} strokeWidth={2} />
+                ) : (
+                  <Lightbulb size={12} strokeWidth={2} />
+                )}
+
+                <span>{member.tag}</span>
               </div>
-              <img src={m.img} alt={m.name} className="w-full aspect-[280/223] object-cover grayscale-0" />
+
+              <div className="team-image-inner">
+                <motion.img
+                  src={member.img}
+                  alt={member.name}
+                  whileHover={{ scale: 1.03 }}
+                  transition={{
+                    duration: 0.6,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  className="team-image"
+                />
+              </div>
+
             </div>
-            <div className="p-4 flex items-center justify-between">
+
+            {/* INFO */}
+            <div className="team-info">
+
               <div>
-                <p className="font-semibold">{m.name}</p>
-                <p className="text-xs text-black/50">{m.role}</p>
+                <h3 className="team-name">
+                  {member.name}
+                </h3>
+
+                <p className="team-role">
+                  {member.role}
+                </p>
               </div>
-              <a
-                href={m.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 rounded-md bg-black/5 flex items-center justify-center text-xs hover:bg-black/10 transition-colors"
-                aria-label="LinkedIn"
-              >
-                in
-              </a>
+
+              {/* SOCIAL */}
+              <div className="team-socials">
+
+                <motion.a
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{
+                    y: -2,
+                    scale: 1.05,
+                  }}
+                  whileTap={{
+                    scale: 0.95,
+                  }}
+                  className="social-button"
+                  aria-label={`${member.name} LinkedIn`}
+                >
+                  in
+                </motion.a>
+
+                <motion.a
+                  href={member.twitter}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{
+                    y: -2,
+                    scale: 1.05,
+                  }}
+                  whileTap={{
+                    scale: 0.95,
+                  }}
+                  className="social-button social-x"
+                  aria-label={`${member.name} X`}
+                >
+                  𝕏
+                </motion.a>
+
+              </div>
+
             </div>
-          </div>
+          </motion.div>
         ))}
 
-        <div className="sm:col-span-2 rounded-[30px] bg-red text-white p-6 flex flex-col justify-between">
-          <div>
-            <p className="font-bold text-xl">You can be here</p>
-            <p className="text-sm text-white/85 mt-3 leading-relaxed">
-              We value curiosity, collaboration, and a can-do attitude. Oh, and coffee, lots of coffee.
-              Come join a team that celebrates your unique skills and helps you unlock your full potential.
+        {/* JOIN CARD */}
+        <motion.div
+          className="join-card"
+          initial={{
+            opacity: 0,
+            y: 35,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            margin: '-60px',
+          }}
+          transition={{
+            duration: 0.6,
+            delay: 0.24,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        >
+
+          <div className="join-content">
+
+            <h3>
+              You can be here
+            </h3>
+
+            <p>
+              We value curiosity, collaboration, and a can-do
+              attitude. Oh, and coffee, lots of coffee. Come join a
+              team that celebrates your unique skills and helps you
+              unlock your full potential.
             </p>
+
           </div>
+
           <motion.a
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
             href="mailto:elevenstudio.agency@gmail.com"
-            className="bg-black text-white text-sm rounded-full px-5 py-3 mt-6 text-center hover:bg-neutral-800 transition-colors w-fit"
+            whileHover={{
+              scale: 1.025,
+            }}
+            whileTap={{
+              scale: 0.97,
+            }}
+            className="join-button"
           >
             Join Our Team
           </motion.a>
-        </div>
+
+        </motion.div>
+
       </div>
+
     </section>
   )
 }

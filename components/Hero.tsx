@@ -39,7 +39,7 @@ export default function Hero() {
   style={{
     backgroundColor: '#f5f1ee',
   }}
-  className="relative mx-auto overflow-hidden pt-[138px] pb-16 mt-6"
+  className="relative mx-auto overflow-hidden pt-[138px] pb-16"
 >
   <img
   src="https://framerusercontent.com/images/5yAhk6uaYEAOW91olrnDnYNwY.png?width=1716&height=998"

@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const links = [
   { label: 'Home', href: '#home' },
@@ -14,6 +14,7 @@ const links = [
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState('home')
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const menuRef = useRef<HTMLUListElement>(null)
 
@@ -28,9 +29,9 @@ export default function Navbar() {
 
   const [isReady, setIsReady] = useState(false)
 
-  /* --------------------------------
+  /* ================================
      ACTIVE SECTION DETECTION
-  -------------------------------- */
+  ================================= */
 
   useEffect(() => {
     const sections = links
@@ -78,9 +79,9 @@ export default function Navbar() {
     }
   }, [])
 
-  /* --------------------------------
-     UPDATE RED PILL POSITION
-  -------------------------------- */
+  /* ================================
+     DESKTOP RED INDICATOR
+  ================================= */
 
   useEffect(() => {
     const updateIndicator = () => {
@@ -123,9 +124,25 @@ export default function Navbar() {
     }
   }, [activeSection])
 
-  /* --------------------------------
+  /* ================================
+     LOCK BODY WHEN MOBILE MENU OPEN
+  ================================= */
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [mobileMenuOpen])
+
+  /* ================================
      MENU CLICK
-  -------------------------------- */
+  ================================= */
 
   const handleMenuClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -133,7 +150,6 @@ export default function Navbar() {
   ) => {
     e.preventDefault()
 
-    // Immediately highlight clicked menu
     setActiveSection(sectionId)
 
     const target =
@@ -146,134 +162,226 @@ export default function Navbar() {
       })
     }
 
-    // Update URL hash without jumping
     window.history.pushState(
       null,
       '',
       `#${sectionId}`
     )
+
+    // Mobile menu close
+    setMobileMenuOpen(false)
   }
 
   return (
-    <header
-      style={{
-        backgroundColor: '#f5f1ee',
-      }}
-      className="w-full pt-4 fixed top-0 left-0 right-0 z-50"
-    >
-      <nav className="max-w-[540px] mx-auto flex items-center justify-center">
+    <>
+      {/* =================================
+          DESKTOP NAVBAR
+      ================================== */}
 
-        <div
-          className="
-            relative
-            overflow-hidden
-            rounded-full
-            bg-white/80
-            backdrop-blur-md
-            shadow-[0_5px_20px_rgba(0,0,0,0.05)]
-          "
+      <header className="navbar-header">
+        <nav className="navbar-nav">
+          <div className="navbar-container">
+            <ul
+              ref={menuRef}
+              className="navbar-menu"
+            >
+              {/* Moving red background */}
+
+              <motion.div
+                className="navbar-indicator"
+                initial={false}
+                animate={{
+                  left: indicator.left,
+                  width: indicator.width,
+                  opacity: isReady ? 1 : 0,
+                }}
+                transition={{
+                  left: {
+                    duration: 0.55,
+                    ease: [0.65, 0, 0.35, 1],
+                  },
+                  width: {
+                    duration: 0.55,
+                    ease: [0.65, 0, 0.35, 1],
+                  },
+                  opacity: {
+                    duration: 0.15,
+                  },
+                }}
+              />
+
+              {links.map((link) => {
+                const sectionId =
+                  link.href.replace('#', '')
+
+                const isActive =
+                  activeSection === sectionId
+
+                return (
+                  <li
+                    key={link.label}
+                    ref={(element) => {
+                      itemRefs.current[sectionId] =
+                        element
+                    }}
+                    className="navbar-item"
+                  >
+                    <a
+                      href={link.href}
+                      onClick={(e) =>
+                        handleMenuClick(
+                          e,
+                          sectionId
+                        )
+                      }
+                      className={`navbar-link ${
+                        isActive ? 'active' : ''
+                      }`}
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        </nav>
+      </header>
+
+      {/* =================================
+          MOBILE HEADER
+      ================================== */}
+
+      <header className="mobile-navbar">
+        <a
+          href="#home"
+          className="mobile-navbar-logo"
+          onClick={(e) =>
+            handleMenuClick(e, 'home')
+          }
         >
+          {/* Put your real logo at public/logo.png */}
+          <img
+            src="logo.png"
+            alt="Eleven"
+          />
+        </a>
 
-          <ul
-            ref={menuRef}
-            className="
-              relative
-              flex
-              items-center
-              gap-1
-              px-2
-              py-2
-              text-sm
-              font-medium
-            "
-          >
+        <button
+          type="button"
+          className="mobile-menu-button"
+          aria-label="Open menu"
+          onClick={() =>
+            setMobileMenuOpen(true)
+          }
+        >
+          <span></span>
+          <span></span>
+        </button>
+      </header>
 
-            {/* --------------------------------
-                SINGLE MOVING RED BACKGROUND
-            -------------------------------- */}
+      {/* =================================
+          MOBILE MENU
+      ================================== */}
+
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <>
+            {/* Overlay */}
 
             <motion.div
-              className="
-                absolute
-                top-2
-                bottom-2
-                rounded-full
-                bg-red
-                z-0
-              "
-              initial={false}
-              animate={{
-                left: indicator.left,
-                width: indicator.width,
-                opacity: isReady ? 1 : 0,
-              }}
+              className="mobile-menu-overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               transition={{
-                left: {
-                  duration: 0.55,
-                  ease: [0.65, 0, 0.35, 1],
-                },
-                width: {
-                  duration: 0.55,
-                  ease: [0.65, 0, 0.35, 1],
-                },
-                opacity: {
-                  duration: 0.15,
-                },
+                duration: 0.3,
               }}
+              onClick={() =>
+                setMobileMenuOpen(false)
+              }
             />
 
-            {/* --------------------------------
-                MENU ITEMS
-            -------------------------------- */}
+            {/* Side Drawer */}
 
-            {links.map((link) => {
-              const sectionId =
-                link.href.replace('#', '')
+            <motion.aside
+              className="mobile-menu-drawer"
+              initial={{
+                x: '100%',
+              }}
+              animate={{
+                x: 0,
+              }}
+              exit={{
+                x: '100%',
+              }}
+              transition={{
+                duration: 0.45,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
+              {/* Close Button */}
 
-              const isActive =
-                activeSection === sectionId
+              <button
+                type="button"
+                className="mobile-menu-close"
+                aria-label="Close menu"
+                onClick={() =>
+                  setMobileMenuOpen(false)
+                }
+              >
+                ×
+              </button>
 
-              return (
-                <li
-                  key={link.label}
-                  ref={(element) => {
-                    itemRefs.current[sectionId] =
-                      element
-                  }}
-                  className="relative z-10"
-                >
-                  <a
-                    href={link.href}
-                    onClick={(e) =>
-                      handleMenuClick(
-                        e,
-                        sectionId
-                      )
-                    }
-                    className={`
-                      relative
-                      px-4
-                      py-2
-                      rounded-full
-                      inline-block
-                      transition-colors
-                      duration-200
-                      ${
-                        isActive
-                          ? 'text-white'
-                          : 'text-neutral-600 hover:text-black'
+              {/* Mobile Menu Links */}
+
+              <nav className="mobile-menu-links">
+                {links.map((link, index) => {
+                  const sectionId =
+                    link.href.replace('#', '')
+
+                  const isActive =
+                    activeSection === sectionId
+
+                  return (
+                    <motion.a
+                      key={link.label}
+                      href={link.href}
+                      onClick={(e) =>
+                        handleMenuClick(
+                          e,
+                          sectionId
+                        )
                       }
-                    `}
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              )
-            })}
-
-          </ul>
-        </div>
-      </nav>
-    </header>
+                      className={`mobile-menu-link ${
+                        isActive
+                          ? 'active'
+                          : ''
+                      }`}
+                      initial={{
+                        opacity: 0,
+                        x: 25,
+                      }}
+                      animate={{
+                        opacity: 1,
+                        x: 0,
+                      }}
+                      transition={{
+                        delay:
+                          0.12 +
+                          index * 0.05,
+                        duration: 0.3,
+                      }}
+                    >
+                      {link.label}
+                    </motion.a>
+                  )
+                })}
+              </nav>
+            </motion.aside>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   )
 }

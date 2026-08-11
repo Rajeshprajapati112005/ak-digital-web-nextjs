@@ -5,8 +5,8 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10">
           <div>
             <h2 className="font-serif text-[90px] md:text-[120px] leading-[1.1] tracking-tight">
-              <span className="text-white">el</span>
-              <span className="text-red">even</span>
+              <span className="text-white">ak</span>
+              <span className="text-red"> digital web</span>
             </h2>
             <p className="text-white/90 mt-2 max-w-sm text-lg font-medium">
               The next big thing starts here, drop us a line and let&apos;s
@@ -26,7 +26,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-red-400 text-sm hover:text-white transition-colors flex items-center gap-1"
-                style={{ color: '#fa5a5a' }}
+                style={{ color: '#0768e7' }}
               >
                 {s.label} →
               </a>

@@ -25,6 +25,966 @@ body {
   font-style: italic;
 }
 
+/* =========================================
+   DESKTOP NAVBAR
+========================================= */
+
+.navbar-header {
+  width: 100%;
+  padding-top: 16px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+ 
+}
+
+.navbar-nav {
+  max-width: 540px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px;
+  margin: 0;
+  list-style: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.navbar-indicator {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  border-radius: 999px;
+  background: #0768e7;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.navbar-item {
+  position: relative;
+  z-index: 10;
+}
+
+.navbar-link {
+  position: relative;
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #525252;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.navbar-link:hover {
+  color: #000;
+}
+
+.navbar-link.active {
+  color: #fff;
+}
+
+
+/* =========================================
+   MOBILE HEADER
+========================================= */
+
+.mobile-navbar {
+  display: none;
+}
+
+
+/* =========================================
+   MOBILE MENU
+========================================= */
+
+.mobile-menu-overlay {
+  display: none;
+}
+
+.mobile-menu-drawer {
+  display: none;
+}
+
+
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+
+  /* Hide desktop navbar */
+
+  .navbar-header {
+    display: none;
+  }
+
+
+  /* Mobile top bar */
+
+  .mobile-navbar {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+
+    padding: 0 18px;
+
+    align-items: center;
+    justify-content: space-between;
+
+    background: #f5f1ee;
+
+    z-index: 100;
+  }
+
+
+  /* Logo */
+
+  .mobile-navbar-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: auto;
+    height: 38px;
+
+    text-decoration: none;
+  }
+
+  .mobile-navbar-logo img {
+    display: block;
+
+    max-width: 175px;
+    max-height: 50px;
+
+    width: auto;
+    height: auto;
+
+    object-fit: contain;
+  }
+
+
+  /* Hamburger */
+
+  .mobile-menu-button {
+    width: 38px;
+    height: 38px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.9);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 4px;
+
+    cursor: pointer;
+
+    box-shadow:
+      0 4px 15px rgba(0, 0, 0, 0.06);
+
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .mobile-menu-button:hover {
+    transform: scale(1.04);
+  }
+
+  .mobile-menu-button span {
+    width: 13px;
+    height: 1.5px;
+
+    background: #777;
+
+    border-radius: 10px;
+
+    display: block;
+  }
+
+
+  /* Overlay */
+
+  .mobile-menu-overlay {
+    display: block;
+
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.12);
+
+    z-index: 200;
+  }
+
+
+  /* Right drawer */
+
+  .mobile-menu-drawer {
+    display: block;
+
+    position: fixed;
+
+    top: 8px;
+    right: 4px;
+    bottom: 8px;
+
+    width: min(88vw, 360px);
+
+    background: rgba(255, 255, 255, 0.96);
+
+    border-radius: 22px;
+
+    z-index: 201;
+
+    overflow-y: auto;
+
+    box-shadow:
+      -10px 0 40px rgba(0, 0, 0, 0.08);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+
+  /* Close */
+
+  .mobile-menu-close {
+    position: absolute;
+
+    top: 10px;
+    right: 12px;
+
+    width: 34px;
+    height: 34px;
+
+    border: none;
+    background: transparent;
+
+    color: #aaa;
+
+    font-size: 26px;
+    font-weight: 300;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition:
+      color 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .mobile-menu-close:hover {
+    color: #333;
+    transform: rotate(90deg);
+  }
+
+
+  /* Links container */
+
+  .mobile-menu-links {
+    min-height: 100%;
+
+    padding:
+      58px
+      24px
+      35px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: 4px;
+  }
+
+
+  /* Individual links */
+
+  .mobile-menu-link {
+    width: 100%;
+    max-width: 220px;
+
+    min-height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 20px;
+
+    border-radius: 999px;
+
+    text-decoration: none;
+
+    color: #333;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    transition:
+      background 0.25s ease,
+      color 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  .mobile-menu-link:hover {
+    background: #f7f7f7;
+    color: #000;
+  }
+
+
+  /* Active red pill */
+
+  .mobile-menu-link.active {
+    background: #0768e7;
+    color: #fff;
+
+    box-shadow:
+      0 5px 15px rgba(255, 48, 48, 0.18);
+  }
+
+  .mobile-menu-link.active:hover {
+    background: #0768e7;
+    color: #fff;
+  }
+}
+
+
+/* =========================================
+   VERY SMALL MOBILE
+========================================= */
+
+@media (max-width: 400px) {
+
+  .mobile-navbar {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .mobile-menu-drawer {
+    width: calc(100vw - 8px);
+
+    top: 4px;
+    right: 4px;
+    bottom: 4px;
+  }
+
+  .mobile-menu-links {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .mobile-menu-link {
+    max-width: 110px;
+  }
+}
+
+/* =====================================================
+   SERVICES SIDEBAR NAVIGATION
+===================================================== */
+
+.service-nav-item {
+  display: flex;
+  align-items: center;
+
+  width: fit-content;
+
+  text-decoration: none;
+
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 140%;
+
+  color: #1d322d;
+
+  opacity: 0.8;
+
+  cursor: pointer;
+
+  position: relative;
+
+  will-change: transform;
+
+  transition:
+    opacity 0.3s ease,
+    color 0.3s ease;
+}
+
+
+/* =====================================================
+   ARROW
+===================================================== */
+
+.service-nav-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 22px;
+  min-width: 22px;
+
+  margin-right: 7px;
+
+  color: #0768e7;
+
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1;
+
+  flex-shrink: 0;
+
+  will-change: transform, opacity;
+}
+
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+.service-nav-title {
+  display: inline-block;
+
+  white-space: nowrap;
+
+  will-change: color;
+}
+
+
+/* =====================================================
+   HOVER
+===================================================== */
+
+.service-nav-item:hover {
+  opacity: 1;
+}
+
+.service-nav-item:hover .service-nav-title {
+  color: #0768e7 !important;
+}
+
+
+/* =====================================================
+   ACTIVE ITEM
+===================================================== */
+
+.service-nav-active {
+  opacity: 1;
+}
+
+.service-nav-active .service-nav-title {
+  color: #1d322d;
+}
+
+
+/* =====================================================
+   ACTIVE + HOVER
+===================================================== */
+
+.service-nav-active:hover .service-nav-title {
+  color: #0768e7 !important;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 767px) {
+
+  .service-nav-item {
+    display: none;
+  }
+
+}
+
+/* =========================================
+   ABOUT SECTION
+========================================= */
+
+.about-section {
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 64px 24px;
+}
+
+
+/* =========================================
+   ABOUT LABEL
+========================================= */
+
+.about-label-wrapper {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.about-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 6px 14px 6px 6px;
+
+  border-radius: 999px;
+
+  background: #eef1f4;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  color: #111;
+}
+
+.about-label-icon {
+  width: 24px;
+  height: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #000;
+  color: #fff;
+}
+
+
+/* =========================================
+   ABOUT HEADING
+========================================= */
+
+.about-heading {
+    width: 100%;
+    max-width: 850px;
+    margin: 16px 0 0;
+    font-family: 'Inter';
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.22;
+    letter-spacing: -0.02em;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.about-heading strong {
+  color: #000;
+  font-weight: 500;
+}
+
+
+/* =========================================
+   GRID
+========================================= */
+
+.about-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 10px;
+
+  margin-top: 56px;
+}
+
+
+/* =========================================
+   TEAM CARD
+========================================= */
+
+.team-card {
+  overflow: hidden;
+
+  border-radius: 30px;
+
+  background: #f8faf5;
+}
+
+
+/* =========================================
+   TEAM IMAGE
+========================================= */
+
+.team-image-wrapper {
+  position: relative;
+
+  padding: 10px 10px 0;
+}
+
+.team-image-inner {
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: 22px;
+
+  width: 100%;
+
+  aspect-ratio: 1 / 1;
+}
+
+.team-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: top center;
+
+  filter: grayscale(100%);
+}
+
+
+/* =========================================
+   TAG
+========================================= */
+
+.team-tag {
+  position: absolute;
+
+  top: 10px;
+  left: 10px;
+
+  z-index: 10;
+
+  display: inline-flex;
+
+  align-items: center;
+  gap: 6px;
+
+  padding: 8px 13px;
+
+  border-radius: 999px;
+
+  background: #0768e7;
+
+  color: #fff;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 0.03em;
+
+  text-transform: uppercase;
+}
+
+
+/*
+   Agar tumhare project me primary color
+   kisi aur CSS variable se defined hai,
+   --primary-color ki jagah apni variable
+   use kar sakte ho.
+*/
+
+
+/* =========================================
+   TEAM INFO
+========================================= */
+
+.team-info {
+  display: flex;
+
+  align-items: flex-end;
+  justify-content: space-between;
+
+  padding: 14px 16px 16px;
+}
+
+.team-name {
+  margin: 0;
+
+  font-family: serif;
+
+  font-size: 23px;
+  font-weight: 700;
+
+  line-height: 1;
+
+  letter-spacing: -0.025em;
+
+  color: #111;
+}
+
+.team-role {
+  margin: 5px 0 0;
+
+  font-size: 14px;
+
+  line-height: 1.2;
+
+  color: rgba(0, 0, 0, 0.5);
+}
+
+
+/* =========================================
+   SOCIAL BUTTONS
+========================================= */
+
+.team-socials {
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+}
+
+.social-button {
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 5px;
+
+  background: rgba(0, 0, 0, 0.06);
+
+  color: #111;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.social-button:hover {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.social-x {
+  font-size: 15px;
+}
+
+
+/* =========================================
+   JOIN CARD
+========================================= */
+
+.join-card {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  min-height: 100%;
+
+  padding: 28px 20px 20px;
+
+  border-radius: 30px;
+
+  background: #0768e7;
+
+  color: #fff;
+}
+
+.join-content h3 {
+  margin: 0;
+
+  font-family: serif;
+
+  font-size: 25px;
+  font-weight: 700;
+
+  line-height: 1.1;
+
+  letter-spacing: -0.025em;
+}
+
+.join-content p {
+  max-width: 260px;
+
+  margin: 12px 0 0;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  line-height: 1.45;
+
+  color: rgba(255, 255, 255, 0.9);
+}
+
+
+/* =========================================
+   JOIN BUTTON
+========================================= */
+
+.join-button {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 30px;
+
+  padding: 12px 20px;
+
+  border-radius: 999px;
+
+  background: #000;
+
+  color: #fff;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.join-button:hover {
+  background: #171717;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+  .about-section {
+    padding: 56px 20px;
+  }
+
+  .about-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .join-card {
+    grid-column: span 2;
+
+    min-height: 320px;
+  }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 640px) {
+  .about-section {
+    padding: 48px 16px;
+  }
+
+  .about-label-wrapper {
+    justify-content: center;
+  }
+
+  .about-heading {
+    margin-top: 16px;
+
+    font-size: 22px;
+
+    line-height: 1.25;
+
+    text-align: center;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+
+    margin-top: 40px;
+  }
+
+  .join-card {
+    grid-column: auto;
+
+    min-height: 330px;
+
+    padding: 24px 18px 18px;
+  }
+
+  .team-name {
+    font-size: 21px;
+  }
+
+  .team-role {
+    font-size: 13px;
+  }
+
+  .team-image-inner {
+    aspect-ratio: 1 / 1;
+  }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 400px) {
+  .about-heading {
+    font-size: 20px;
+  }
+
+  .team-tag {
+    padding: 7px 10px;
+
+    font-size: 9px;
+  }
+
+  .team-info {
+    padding: 12px 13px 14px;
+  }
+
+  .team-name {
+    font-size: 19px;
+  }
+}
+
 .container-px {
   @apply px-6 md:px-10 lg:px-16;
 }

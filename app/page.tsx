@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <main className="overflow-x-hidden bg-white">
       <Navbar />
-      <div className="pt-2">
+      <div >
         <Hero />
         <Gallery />
       </div>
