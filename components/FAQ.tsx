@@ -6,57 +6,68 @@ import { X } from 'lucide-react'
 
 const faqs = [
   {
-    q: 'What services do you offer?',
-    a: "We're a one-stop-shop for all things digital! From crafting stunning websites to skyrocketing your SEO rankings, managing your social media, and building unforgettable brands, we do it all. Oh, and we promise we don't bite.",
+    q: 'What services does AK Digital Web provide?',
+    a: 'AK Digital Web provides end-to-end digital solutions including web design and development, eCommerce development, UI/UX design, branding, SEO, digital marketing, and custom digital solutions tailored to your business goals.',
   },
   {
-    q: 'How long does it take to design a website?',
-    a: 'Think of us as your digital chefs—we cook up greatness without rushing the recipe. Typically, it takes 4–6 weeks, depending on your needs. But don\u2019t worry, we keep you in the loop every step of the way!',
+    q: 'How long does it take to design and develop a website?',
+    a: 'The timeline depends on the size and complexity of the project. A typical business website takes around 2–6 weeks, while larger eCommerce websites and custom digital solutions may require additional time. We define the timeline clearly before development begins.',
   },
   {
-    q: 'Do you work with small businesses or just big brands?',
-    a: 'Size doesn\u2019t matter! Whether you\u2019re a budding startup or an industry giant, we\u2019re here to make your vision a reality. Big dreams? Small budget? Let\u2019s chat!',
+    q: 'Do you work with startups and small businesses?',
+    a: 'Yes. We work with startups, small businesses, growing companies, and established brands. Our approach is based on your business goals, audience, and requirements rather than the size of your company.',
   },
   {
-    q: 'Can I customize the packages you offer?',
-    a: 'Absolutely! Think of our packages as a base pizza—you can add or swap toppings (services) to create your perfect slice of digital success.',
+    q: 'Can you customize a website based on my business requirements?',
+    a: 'Absolutely. We do not believe in one-size-fits-all solutions. Every website can be customized to match your brand, functionality, user experience, integrations, and business objectives.',
   },
   {
-    q: 'How do you measure the success of a marketing campaign?',
-    a: "Numbers don't lie, and neither do we! We track everything from website traffic to social media engagement and conversions. You'll get regular reports, so you're always in the know.",
+    q: 'Do you provide eCommerce website development?',
+    a: 'Yes. We build conversion-focused eCommerce websites using platforms such as WooCommerce and Shopify, as well as custom solutions when a project requires more flexibility or advanced functionality.',
   },
   {
-    q: "What if I don't like the designs or strategies?",
-    a: 'Honesty hour—we want you to love what we create. If you\u2019re not thrilled, we\u2019ll go back to the drawing board and tweak until it\u2019s perfect. Your happiness is our success.',
+    q: 'Do you provide SEO and digital marketing services?',
+    a: 'Yes. We provide SEO and digital marketing services focused on improving online visibility, attracting relevant traffic, and generating meaningful business opportunities. Our strategies are aligned with measurable business objectives.',
   },
   {
-    q: 'How do I get started?',
-    a: 'It\u2019s easy! Just click that shiny "Contact Us" button, shoot us a message, or give us a call. We\u2019ll grab coffee (virtually or in-person) and start brainstorming magic together.',
+    q: 'What happens if I need changes during the project?',
+    a: 'We maintain clear communication throughout the project. Feedback and revisions are handled according to the agreed project scope, ensuring the final product meets the defined requirements and expectations.',
   },
   {
-    q: 'Do you provide support after launching my website or campaign?',
-    a: "Of course! We don't just wave goodbye after launch. We offer website maintenance, performance tracking, and ongoing support to ensure your success continues.",
+    q: 'Do you provide support after the website is launched?',
+    a: 'Yes. Our relationship does not end at launch. We can provide ongoing maintenance, technical support, performance optimization, security updates, and further improvements based on your business needs.',
   },
   {
-    q: 'What makes your agency different from the rest?',
-    a: "We're not just an agency—we're your partners in success. We combine creativity, strategy, and a sprinkle of fun to make your brand unforgettable. Plus, we love building relationships that last.",
+    q: 'Can you integrate APIs and third-party tools?',
+    a: 'Yes. We can integrate payment gateways, CRM systems, analytics platforms, email marketing tools, third-party APIs, automation systems, and other services required by your project.',
+  },
+  {
+    q: 'Can you integrate AI features into a website?',
+    a: 'Yes. We can integrate AI-powered functionality such as intelligent chatbots, AI assistants, knowledge-base search, content workflows, and other AI solutions where they provide genuine value to your business.',
+  },
+  {
+    q: 'How do I get started with AK Digital Web?',
+    a: 'Simply contact us and share your project requirements, goals, and timeline. We will review your requirements, discuss the best approach, and guide you through the next steps.',
+  },
+  {
+    q: 'What makes AK Digital Web different?',
+    a: 'We combine strategy, design, development, and business thinking instead of treating a website as just another design project. Our goal is to create digital experiences that look professional, perform reliably, and contribute to your long-term business growth.',
   },
 ]
-
 export default function FAQ() {
   const [open, setOpen] = useState<number | null>(0)
 
   return (
-    <section id="faq" className="bg-[#f5f1ee] py-16 px-6">
-       <div className="container-px  ">
+    <section id="faq" className="bg-[#f5f1ee] md:py-16 py-6 ">
+       <div className="container-px  mx-auto ">
         <div className='grid md:grid-cols-[2fr_2.2fr] gap-8 mt-12'>
-      <div className=" mb-10">
+      <div className=" md:mb-10 mb-5">
         <p className="section-label justify-center flex">
           <span className="bg-[#fff] rounded-full px-4 py-1.5">
             Frequently Asked Questions
           </span>
         </p>
-        <h2 className="font-serif text-[48px] mt-4 tracking-tight">
+        <h2 className="mt-3 font-serif  leading-tight tracking-tight text-black md:text-[52px] text-[40px]">
           FAQ It Up! Your curiosity meets our expertise, let&apos;s clear
           things up!
         </h2>

@@ -4,10 +4,10 @@ import { motion } from 'framer-motion'
 
 const stats = [
   {
-    value: '20',
+    value: '200',
     suffix: '+',
     label: 'Projects Delivered',
-    desc: "We've successfully completed over 25 projects—and we're just getting started!",
+    desc: "We've successfully completed over 200 projects—and we're just getting started!",
   },
   {
     value: '70',
@@ -16,31 +16,37 @@ const stats = [
     desc: 'Our strategies have helped clients achieve up to 70% revenue growth in just one year!',
   },
   {
-    value: '50',
+    value: '80',
     suffix: '+',
     label: 'Happy Clients',
-    desc: 'More than 50 satisfied clients trust us to bring their ideas to life.',
+    desc: 'More than 80 satisfied clients trust us to bring their ideas to life.',
+  },
+  {
+    value: '5',
+    suffix: '+',
+    label: 'Experience in Digital',
+    desc: 'Years of expertise helping businesses turn ideas into impactful digital experiences.',
   },
 ]
 
 export default function Stats() {
   return (
-    <section id="stats" className="  bg-[#f5f1ee]  py-20 px-6 text-center">
-      <div className="container-px max-w-5xl mx-auto text-center">
+    <section id="stats" className="  bg-[#f5f1ee]  md:py-20 py-10  text-center">
+      <div className="container-px  mx-auto text-center">
       <motion.h2
         initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="font-serif text-[54px] tracking-tight leading-none"
+        className="font-serif text-[40px] md:text-[54px] tracking-tight leading-none"
       >
         <span className="text-red">Building</span> brands,{' '}
         <span className="text-red">boosting</span> businesses, and{' '}
-        <span className="text-red">redefining</span> possibilities. Let&apos;s
+        <span className="text-red">redefining <br></br></span> possibilities. Let&apos;s
         grow your brand together.
       </motion.h2>
 
-      <div className="grid sm:grid-cols-3 gap-6 mt-14">
+      <div className="grid sm:grid-cols-4 gap-6 mt-14">
         {stats.map((s, i) => (
           <motion.div
             key={s.label}

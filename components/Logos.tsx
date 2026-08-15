@@ -24,7 +24,7 @@ export default function Logos() {
   return (
     <section id="collab" className=" bg-[#f5f1ee] py-16 text-center">
       <div className="max-w-6xl mx-auto px-6 text-center">
-         <h2 className="font-serif text-[52px] tracking-tight leading-none">
+         <h2 className="font-serif text-[40px] md:text-[52px] tracking-tight leading-none">
         We don&apos;t just work together, we{' '}
         <span className="text-red">grow</span> together.
       </h2>

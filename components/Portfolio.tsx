@@ -43,14 +43,14 @@ const projects = [
 
 export default function Portfolio() {
   return (
-    <section id="projects-1" className=" bg-[#f5f1ee]  py-16 px-6 text-center">
-        <div className="container-px text-center">
+    <section id="projects-1" className=" bg-[#f5f1ee]  md:py-16 py-3 md:px-6 text-center">
+        <div className="container-px  mx-auto text-center">
       <motion.h2
         initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="font-serif text-[48px] tracking-tight"
+        className="font-serif text-[40px] md:text-[54px] tracking-tight leading-none"
       >
         Don&apos;t trust our words, trust our <span className="text-red">work</span>!
       </motion.h2>

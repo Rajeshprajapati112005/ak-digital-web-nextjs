@@ -20,7 +20,7 @@ const team = [
     tag: 'CREATIVE WIZARD',
     icon: 'bulb',
     img: 'rp.jpg',
-    linkedin: 'https://www.linkedin.com/in/mananahujaaa/',
+    linkedin: 'https://www.linkedin.com/in/rajesh-prajapati-2254332a7/',
     twitter: 'https://twitter.com/',
   },
 ]
@@ -28,7 +28,7 @@ const team = [
 export default function About() {
   return (
     <section id="about" className="about-section bg-[#f5f1ee]">
-      <div className="container-px  ">
+      <div className="container-px  mx-auto ">
       {/* ABOUT LABEL */}
       <motion.div
         className="about-label-wrapper"
@@ -56,15 +56,7 @@ export default function About() {
           ease: [0.22, 1, 0.36, 1],
         }}
       >
-        We began as a small group of creators with a{' '}
-        <strong>big belief:</strong> great ideas deserve{' '}
-        <strong>bold execution.</strong> From coffee-fueled
-        brainstorms to a thriving digital Team, our mission remains
-        simple, craft <strong>impactful</strong> solutions that help
-        brands <strong>stand</strong> out. With{' '}
-        <strong>strategy, design, and a touch of magic</strong>, we
-        bring ideas to life. Let&apos;s make something amazing
-        together.
+        AK Digital Web is a web design and development agency dedicated to helping businesses grow through modern websites, eCommerce solutions, and digital experiences. We combine creativity, technology, and strategy to build high-performing digital solutions that strengthen brands, engage customers, and drive measurable business growth.
       </motion.h2>
 
       {/* TEAM */}

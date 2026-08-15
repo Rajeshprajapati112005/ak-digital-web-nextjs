@@ -47,17 +47,17 @@ export default function Hero() {
   className="w-full h-full object-cover"
   style={{ objectPosition: 'center', position:'absolute',top:'0' }}
 />
-  <div className="container-px max-w-5xl mx-auto text-center">
+  <div className="container-px  mx-auto text-center">
   <div className="absolute inset-0 -z-10">
    
   </div>
-      <div className="max-w-[600px] mx-auto text-center px-4 relative">
-        <h1 className="font-serif text-[62px] leading-[1em] tracking-tight text-[#1d322d]">
-          <AnimatedWords text="Your MVP's" />
+      <div className="max-w-[770px] mx-auto text-center px-4 relative">
+        <h1 className="font-serif text-[34px] md:text-[60px] leading-[1em] tracking-tight text-[#1d322d]">
+          <AnimatedWords text="What Can We Build for Your Business?" />
           <em className="not-italic font-serif italic">
-            <AnimatedWords text="favourite" />
+            <AnimatedWords text="We can build it all" />
           </em>
-          <AnimatedWords text="designers!" />
+          <AnimatedWords text="– Guaranteed!" />
         </h1>
 
         <motion.p
@@ -65,10 +65,9 @@ export default function Hero() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3, duration: 0.5 }}
-          className="mt-4 text-[#101010] text-lg tracking-tight"
+          className="mt-4 text-[#101010] md:text-lg tracking-tight"
         >
-          Design your products with world-class designers without breaking
-          the bank. One subscription fee, unlimited design requests.
+          AK Digital Web designs and develops high-performing websites, eCommerce experiences and digital solutions for businesses ready to grow online.
         </motion.p>
 
         <motion.a

@@ -912,7 +912,7 @@ body {
 
 @media (max-width: 640px) {
   .about-section {
-    padding: 48px 16px;
+    padding: 20px 0px;
   }
 
   .about-label-wrapper {
@@ -965,7 +965,7 @@ body {
 
 @media (max-width: 400px) {
   .about-heading {
-    font-size: 20px;
+    font-size: 16px;
   }
 
   .team-tag {
@@ -1257,11 +1257,12 @@ body {
 
 @media (max-width: 768px) {
   .contact-section {
-    padding: 32px 16px 48px;
+    padding:20px 0;
   }
 
   .contact-card {
     min-height: auto;
+     width: auto;
 
     border-radius: 28px;
 
@@ -1358,6 +1359,11 @@ body {
 
     border-radius: 22px;
   }
+}
+
+.container-px {
+    max-width: 1500px;
+    margin: 0 auto;
 }
 
 .container-px {

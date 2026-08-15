@@ -13,7 +13,8 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="work" className="mx-auto max-w-5xl px-6 py-24">
+    <section id="work" className="mx-auto   py-24">
+      <div className="container-px mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -21,7 +22,7 @@ export default function Projects() {
         transition={{ duration: 0.6 }}
         className="mb-14 text-center"
       >
-        <h2 className="font-display text-3xl font-medium tracking-tight md:text-4xl">
+        <h2 className="font-display  font-medium tracking-tight md:text[52px] text[40px]">
           Don&rsquo;t trust our words,
           <br />
           trust our <span className="italic-accent text-red">work!</span>
@@ -59,6 +60,7 @@ export default function Projects() {
             </div>
           </motion.a>
         ))}
+      </div>
       </div>
     </section>
   );

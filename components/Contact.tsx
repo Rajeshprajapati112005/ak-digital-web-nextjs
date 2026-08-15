@@ -61,7 +61,7 @@ export default function Contact() {
      <section
       id="contact"
       className="contact-section bg-[#f5f1ee]">
-         <div className="container-px  ">
+         <div className="container-px  mx-auto">
       <div className="contact-card">
 
         <div className="contact-content">

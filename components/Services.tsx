@@ -1,316 +1,641 @@
-'use client'
+"use client"
 
-import { motion } from 'framer-motion'
-import { useState } from 'react'
-import { ChevronDown } from 'lucide-react'
+import { motion, AnimatePresence } from "framer-motion"
+import { useState } from "react"
 
-const services = [
+import {
+  type LucideIcon,
+  PenTool,
+  Target,
+  PanelsTopLeft,
+  FileText,
+  Facebook,
+  Mail,
+  Presentation,
+  Package,
+  Monitor,
+  ShoppingCart,
+  Code2,
+  Smartphone,
+  Globe,
+  Zap,
+  Database,
+  Plug,
+  Gauge,
+  Search,
+  BarChart3,
+  Megaphone,
+  MousePointerClick,
+  Palette,
+  BookOpen,
+  MessageCircle,
+  Bot,
+  BrainCircuit,
+  Workflow,
+  Settings2,
+  SmartphoneIcon,
+  AppWindow,
+  Server,
+  Store,
+  CreditCard,
+  Tags,
+  LayoutDashboard,
+  Wrench,
+  LineChart,
+} from "lucide-react"
+
+
+// =====================================================
+// TYPES
+// =====================================================
+
+type ServiceItem = {
+  name: string
+  icon: LucideIcon
+}
+
+type Service = {
+  id: string
+  number: string
+  title: string
+  desc: string
+  items: ServiceItem[]
+}
+
+
+// =====================================================
+// SERVICES DATA
+// =====================================================
+
+const services: Service[] = [
   {
-    id: 'service-1',
-    title: 'Web Design and Development',
-    desc: "Your website is like your digital handshake—it's the first thing people notice about you online. Our Web Design & Development services are all about making that handshake firm, friendly, and unforgettable.",
+    id: "service-1",
+    number: "01",
+    title: "Web Design & Development",
+
+    desc:
+      "We create high-performing digital experiences that combine thoughtful design, powerful technology, and seamless user experience. From business websites to complex web applications, we build digital platforms designed to look great, perform fast, and drive real business growth.",
+
     items: [
-      'UI UX Design',
-      'Custom Website Design',
-      'E-Commerce Development',
-      'Content Management Systems (CMS)',
-      'Website Maintenance and Support',
-      'SEO Integration',
-      'UX/UI Optimization',
+      {
+        name: "UI/UX Design",
+        icon: PanelsTopLeft,
+      },
+      {
+        name: "Custom Website Design",
+        icon: Monitor,
+      },
+      {
+        name: "Business Website Development",
+        icon: Globe,
+      },
+      {
+        name: "Next.js & React Development",
+        icon: Code2,
+      },
+      {
+        name: "WordPress Development",
+        icon: FileText,
+      },
+      {
+        name: "Shopify Development",
+        icon: Store,
+      },
+      {
+        name: "Web Application Development",
+        icon: AppWindow,
+      },
+      {
+        name: "CMS Development",
+        icon: LayoutDashboard,
+      },
+      {
+        name: "API Integration",
+        icon: Plug,
+      },
+      {
+        name: "Performance Optimization",
+        icon: Gauge,
+      },
+      {
+        name: "SEO Integration",
+        icon: Search,
+      },
+      {
+        name: "Website Maintenance",
+        icon: Wrench,
+      },
     ],
   },
 
   {
-    id: 'service-2',
-    title: 'Digital Marketing',
-    desc: "Let's face it, the internet is a noisy place. But with our Digital Marketing services, you won't just stand out—you'll shine. We'll help you show up where your customers are hanging out, whether that's Google, Instagram, or somewhere in between. Think of us as your online hype team, always finding clever ways to boost your visibility and drive those sweet, sweet clicks.",
+    id: "service-2",
+    number: "02",
+    title: "E-Commerce & Digital Solutions",
+
+    desc:
+      "We build eCommerce experiences that make it easier for businesses to sell, scale, and connect with customers online. From storefront design and development to payments, optimization, and automation, we create digital solutions built around your business goals.",
+
     items: [
-      'SEO (Search Engine Optimization)',
-      'PPC Advertising',
-      'Social Media Marketing',
-      'Email Marketing',
-      'Content Marketing',
+      {
+        name: "E-Commerce Website Design",
+        icon: ShoppingCart,
+      },
+      {
+        name: "WooCommerce Development",
+        icon: ShoppingCart,
+      },
+      {
+        name: "Shopify Development",
+        icon: Store,
+      },
+      {
+        name: "Custom E-Commerce",
+        icon: Code2,
+      },
+      {
+        name: "Payment Gateway Integration",
+        icon: CreditCard,
+      },
+      {
+        name: "Product & Category Setup",
+        icon: Tags,
+      },
+      {
+        name: "Cart & Checkout Optimization",
+        icon: MousePointerClick,
+      },
+      {
+        name: "E-Commerce SEO",
+        icon: Search,
+      },
+      {
+        name: "Custom Business Solutions",
+        icon: Settings2,
+      },
+      {
+        name: "Third-Party Integrations",
+        icon: Plug,
+      },
+      {
+        name: "Analytics & Tracking",
+        icon: BarChart3,
+      },
+      {
+        name: "Store Support",
+        icon: Wrench,
+      },
     ],
   },
 
   {
-    id: 'service-3',
-    title: 'Branding & Creative Services',
-    desc: "Your brand is so much more than a logo—it's your story, your personality, and your promise to customers. Our Branding & Creative Services bring your identity to life in a way that's bold, beautiful, and 100% you. We'll help you stand out, stick in people's minds, and make your competitors go, “Whoa, that's cool.”",
+    id: "service-3",
+    number: "03",
+    title: "Branding & Digital Marketing",
+
+    desc:
+      "A strong brand needs more than a great logo—it needs a clear identity and the right strategy to reach the people who matter. We combine branding, creative design, SEO, and digital marketing to help businesses build recognition, attract the right audience, and turn attention into growth.",
+
     items: [
-      'Logo Design',
-      'Brand Strategy & Positioning',
-      'Visual Identity Design',
-      'Brand Guidelines',
-      'Social media graphics',
-      'Email design',
-      'Pitch decks & presentations',
-      'Packaging design',
+      {
+        name: "Logo Design",
+        icon: PenTool,
+      },
+      {
+        name: "Brand Strategy & Positioning",
+        icon: Target,
+      },
+      {
+        name: "Visual Identity Design",
+        icon: Palette,
+      },
+      {
+        name: "Brand Guidelines",
+        icon: BookOpen,
+      },
+      {
+        name: "Social Media Graphics",
+        icon: Facebook,
+      },
+      {
+        name: "Email Design",
+        icon: Mail,
+      },
+      {
+        name: "Pitch Decks & Presentations",
+        icon: Presentation,
+      },
+      {
+        name: "Packaging Design",
+        icon: Package,
+      },
+      {
+        name: "SEO & Local SEO",
+        icon: Search,
+      },
+      {
+        name: "Google Ads & PPC",
+        icon: Megaphone,
+      },
+      {
+        name: "Social Media Marketing",
+        icon: MessageCircle,
+      },
+      {
+        name: "Lead Generation",
+        icon: LineChart,
+      },
     ],
   },
 
   {
-    id: 'service-4',
-    title: 'App Design & Development',
-    desc: "Got a brilliant app idea? Let's make it a reality! Whether it's a mobile game, a productivity tool, or the next big social platform, we'll build something that's smooth, sleek, and downright addictive. Our apps are made with love (and a whole lot of coding).",
+    id: "service-4",
+    number: "04",
+    title: "AI, Apps & Automation",
+
+    desc:
+      "We turn ambitious ideas into intelligent digital products. From mobile apps and AI-powered experiences to business automation, we use modern technologies to simplify workflows, improve customer experiences, and create smarter ways for businesses to operate and grow.",
+
     items: [
-      'UI/UX for Apps',
-      'Custom App Development',
-      'Mobile Optimization',
-      'App Store Optimization',
+      {
+        name: "AI-Powered Websites",
+        icon: BrainCircuit,
+      },
+      {
+        name: "AI Chatbots",
+        icon: Bot,
+      },
+      {
+        name: "AI API Integration",
+        icon: Plug,
+      },
+      {
+        name: "Custom AI Solutions",
+        icon: BrainCircuit,
+      },
+      {
+        name: "RAG & Knowledge-Based AI",
+        icon: Database,
+      },
+      {
+        name: "AI Workflow Automation",
+        icon: Workflow,
+      },
+      {
+        name: "Mobile App UI/UX",
+        icon: Smartphone,
+      },
+      {
+        name: "Custom App Development",
+        icon: SmartphoneIcon,
+      },
+      {
+        name: "Web App Development",
+        icon: AppWindow,
+      },
+      
+      {
+        name: "Business Automation",
+        icon: Zap,
+      },
+      {
+        name: "App Store Optimization",
+        icon: Search,
+      },
     ],
   },
 ]
 
+
+// =====================================================
+// MAIN COMPONENT
+// =====================================================
+
 export default function Services() {
-  const [open, setOpen] = useState<string | null>('service-1')
+  const [open, setOpen] = useState("service-1")
+
+  const activeService =
+    services.find((service) => service.id === open) || services[0]
+
 
   return (
     <section
       id="services"
-      className="  py-16 px-6 bg-[#f5f1ee]"
+      className="bg-[#f5f1ee] py-10 "
     >
+      <div className="container-px max-w-7xl">
 
-      {/* ================================
-          HEADING
-      ================================= */}
-       <div className="container-px  ">
-      <div className="text-center max-w-3xl mx-auto">
 
-        <p className="section-label justify-center flex">
-          <span className="bg-[#fff] rounded-full px-4 py-1.5 inline-flex items-center gap-2">
+        {/* =================================================
+            SECTION HEADING
+        ================================================= */}
 
-            <span className="w-6 h-6 bg-black text-white rounded-full flex items-center justify-center text-[10px]">
-              i
+        <div className="text-center">
+
+          <p className="flex justify-center">
+            <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-sm text-black">
+
+              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-black text-[10px] text-white">
+                i
+              </span>
+
+              Our services
+
             </span>
-
-            Our services
-
-          </span>
-        </p>
-
-        <h2 className="font-serif text-[42px] mt-4 tracking-tight">
-          Services designed to help your{' '}
-          <span className="text-red">
-            brand shine
-          </span>{' '}
-          brighter.
-        </h2>
-
-      </div>
+          </p>
 
 
-      {/* ================================
-          MAIN CONTENT
-      ================================= */}
+          <h2 className="mt-5 font-serif text-[36px] leading-tight tracking-tight text-black md:text-[46px] lg:text-[52px]">
 
-      <div className="grid md:grid-cols-[1fr_2.2fr] gap-8 mt-12">
+            Services designed to help your{" "}
+
+            <span className="text-[#0768e7]">
+              brand shine
+            </span>{" "}
+
+            brighter.
+
+          </h2>
+
+        </div>
 
 
-        {/* =================================
-            DESKTOP SIDE NAVIGATION
-        ================================= */}
+        {/* =================================================
+            MAIN SERVICE AREA
+        ================================================= */}
 
-        <div className="hidden md:flex flex-col gap-6 sticky top-28 self-start">
+        <div className="md:mt-14 mt-6 grid gap-10 md:grid-cols-[0.8fr_2.2fr] lg:gap-16">
 
-          {services.map((service) => {
 
-            const isActive = open === service.id
+          {/* =================================================
+              LEFT SERVICE MENU
+          ================================================= */}
 
-            return (
+          <div className="self-start md:sticky md:top-28">
 
-              <motion.a
-                key={service.id}
-                href={`#${service.id}`}
-                onClick={() => setOpen(service.id)}
-                className={`service-nav-item ${
-                  isActive
-                    ? 'service-nav-active'
-                    : ''
-                }`}
-                whileHover={{
-                  x: 8,
+            <div className="flex flex-col gap-3">
+
+              {services.map((service) => {
+
+                const isActive = open === service.id
+
+                return (
+                  <motion.button
+                    key={service.id}
+                    type="button"
+                    onClick={() => setOpen(service.id)}
+                    className="group flex w-fit items-center text-left"
+                    whileHover={{ x: 6 }}
+                    transition={{
+                      duration: 0.3,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                  >
+
+                    {/* ACTIVE ARROW */}
+
+                    <motion.span
+                      initial={false}
+                      animate={{
+                        width: isActive ? 18 : 0,
+                        opacity: isActive ? 1 : 0,
+                        marginRight: isActive ? 10 : 0,
+                      }}
+                      transition={{
+                        duration: 0.3,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                      className="flex shrink-0 overflow-hidden"
+                    >
+                      <span className="text-[18px] leading-none text-[#0768e7]">
+                        ›
+                      </span>
+                    </motion.span>
+
+
+                    {/* SERVICE TITLE */}
+
+                    <motion.span
+                      animate={{
+                        color: isActive
+                          ? "#111111"
+                          : "#444444",
+                        fontWeight: isActive ? 500 : 400,
+                      }}
+                      transition={{
+                        duration: 0.25,
+                      }}
+                      className="text-[17px] leading-7 md:text-[18px]"
+                    >
+                      {service.title}
+                    </motion.span>
+
+                  </motion.button>
+                )
+              })}
+
+            </div>
+
+          </div>
+
+
+          {/* =================================================
+              RIGHT ACTIVE SERVICE
+          ================================================= */}
+
+          <div className="min-w-0">
+
+            <AnimatePresence
+              mode="wait"
+              initial={false}
+            >
+
+              <motion.div
+                key={activeService.id}
+
+                initial={{
+                  opacity: 0,
+                  y: 18,
+                  filter: "blur(5px)",
                 }}
+
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  filter: "blur(0px)",
+                }}
+
+                exit={{
+                  opacity: 0,
+                  y: -12,
+                  filter: "blur(5px)",
+                }}
+
                 transition={{
                   duration: 0.4,
                   ease: [0.22, 1, 0.36, 1],
                 }}
+
+                className="rounded-[34px] bg-[#fafafa] p-6 md:p-8 lg:p-9"
               >
 
-                {/* Arrow */}
 
-                <motion.span
-                 
-                  animate={
-                    isActive
-                      ? {
-                          opacity: 1,
-                          x: 0,
-                        }
-                      : {
-                          opacity: 0,
-                          x: -8,
-                        }
-                  }
-                  whileHover={{
-                    opacity: 1,
-                    x: 0,
-                  }}
-                  transition={{
-                    duration: 0.3,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                >
-                
-                </motion.span>
+                {/* =================================================
+                    TITLE
+                ================================================= */}
 
+                <div className="flex items-start gap-4">
 
-                {/* Service title */}
+                  <span className="mt-1 text-sm font-medium text-black/35">
+                    {activeService.number}
+                  </span>
 
-                <motion.span
-                  className="service-nav-title"
-                  animate={{
-                    color: isActive
-                      ? '#111111'
-                      : '#111111',
-                  }}
-                  whileHover={{
-                    color: '#0768e7',
-                  }}
-                  transition={{
-                    duration: 0.25,
-                    ease: 'easeOut',
-                  }}
-                >
-                  {service.title}
-                </motion.span>
-
-              </motion.a>
-
-            )
-          })}
-
-        </div>
-
-
-        {/* =================================
-            ACCORDION CONTENT
-        ================================= */}
-
-        <div className="space-y-4">
-
-          {services.map((service) => {
-
-            const isOpen = open === service.id
-
-            return (
-
-              <div
-                key={service.id}
-                id={service.id}
-                className="bg-[#faf8f7] rounded-[34px] p-6 md:p-8 scroll-mt-28"
-              >
-
-                {/* Accordion Header */}
-
-                <button
-                  type="button"
-                  onClick={() =>
-                    setOpen(
-                      isOpen
-                        ? null
-                        : service.id
-                    )
-                  }
-                  className="w-full flex items-center justify-between text-left"
-                >
-
-                  <h3 className="font-serif text-2xl font-semibold">
-                    {service.title}
+                  <h3 className="font-serif text-[28px]  leading-tight tracking-tight text-[#111111] md:text-[32px]">
+                    {activeService.title}
                   </h3>
 
-
-                  <motion.span
-                    animate={{
-                      rotate: isOpen
-                        ? 180
-                        : 0,
-                    }}
-                    transition={{
-                      duration: 0.3,
-                      ease: 'easeOut',
-                    }}
-                    className="text-black/60 shrink-0 ml-4"
-                  >
-                    <ChevronDown size={20} />
-                  </motion.span>
-
-                </button>
+                </div>
 
 
-                {/* Accordion Body */}
+                {/* =================================================
+                    DESCRIPTION
+                ================================================= */}
 
-                <motion.div
-                  initial={false}
-                  animate={{
-                    height: isOpen
-                      ? 'auto'
-                      : 0,
-                    opacity: isOpen
-                      ? 1
-                      : 0,
-                  }}
-                  transition={{
-                    height: {
-                      duration: 0.35,
-                      ease: [0.22, 1, 0.36, 1],
-                    },
-                    opacity: {
-                      duration: 0.25,
-                    },
-                  }}
-                  className="overflow-hidden"
-                >
-
-                  {/* Description */}
-
-                  <p className="text-black/70 text-[15px] leading-relaxed mt-4">
-                    {service.desc}
-                  </p>
+                <p className="mt-5 max-w-4xl text-[15px] leading-7 text-black/70 md:text-[16px]">
+                  {activeService.desc}
+                </p>
 
 
-                  {/* Service Tags */}
+                {/* =================================================
+                    SERVICE PILLS
+                ================================================= */}
 
-                  <div className="flex flex-wrap gap-2 mt-5">
+                <div className="mt-7 flex flex-wrap gap-2.5">
 
-                    {service.items.map((item) => (
+                  {activeService.items.map((item, index) => {
 
-                      <span
-                        key={item}
-                        className="text-sm bg-white border border-black/10 rounded-full px-4 py-2 text-black/80 flex items-center gap-1.5"
+                    const Icon = item.icon
+
+                    return (
+                      <motion.div
+                        key={item.name}
+                        initial={{
+                          opacity: 0,
+                          y: 8,
+                        }}
+
+                        animate={{
+                          opacity: 1,
+                          y: 0,
+                        }}
+
+                        transition={{
+                          duration: 0.3,
+                          delay: Math.min(index * 0.035, 0.35),
+                          ease: [0.22, 1, 0.36, 1],
+                        }}
+
+                        whileHover={{
+                          y: -2,
+                          scale: 1.015,
+                        }}
+
+                        className="group inline-flex cursor-default items-center gap-2 rounded-full border border-black/10 bg-white px-3.5 py-2 text-[14px] text-black/85 transition-colors duration-200 hover:border-black/20 md:px-4"
                       >
 
-                        <span className="w-1.5 h-1.5 rounded-full bg-black inline-block" />
+                        {/* ICON */}
 
-                        {item}
+                        <motion.span
+                          whileHover={{
+                            rotate: -8,
+                            scale: 1.12,
+                          }}
 
-                      </span>
+                          transition={{
+                            type: "spring",
+                            stiffness: 400,
+                            damping: 18,
+                          }}
 
-                    ))}
+                          className="flex shrink-0"
+                        >
 
-                  </div>
+                          <Icon
+                            size={16}
+                            strokeWidth={1.8}
+                            className="text-black"
+                          />
 
-                </motion.div>
+                        </motion.span>
 
-              </div>
 
-            )
-          })}
+                        {/* NAME */}
+
+                        <span>
+                          {item.name}
+                        </span>
+
+                      </motion.div>
+                    )
+                  })}
+
+                </div>
+
+              </motion.div>
+
+            </AnimatePresence>
+
+          </div>
 
         </div>
 
+
+        {/* =================================================
+            MOBILE SERVICE MENU
+        ================================================= */}
+
+        <div className="mt-10 md:hidden">
+
+          <div className="grid grid-cols-1 gap-2">
+
+            {services.map((service) => {
+
+              const isActive = open === service.id
+
+              return (
+                <button
+                  key={service.id}
+                  type="button"
+                  onClick={() => setOpen(service.id)}
+                  className={`flex items-center gap-3 rounded-2xl px-4 py-3 text-left transition-all ${
+                    isActive
+                      ? "bg-white text-black"
+                      : "text-black/60"
+                  }`}
+                >
+
+                  <span
+                    className={`h-2 w-2 rounded-full ${
+                      isActive
+                        ? "bg-[#0768e7]"
+                        : "bg-black/20"
+                    }`}
+                  />
+
+                  <span className="text-sm">
+                    {service.title}
+                  </span>
+
+                </button>
+              )
+            })}
+
+          </div>
+
+        </div>
+
+
       </div>
-   </div>
     </section>
   )
 }

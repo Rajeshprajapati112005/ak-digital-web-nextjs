@@ -18,19 +18,27 @@ const rowB = [
 export default function Gallery() {
   return (
     <section className="max-w-[1400px] mx-auto pb-4 space-y-4">
-      <div className="marquee-mask overflow-hidden cursor-ew-resize">
+      
+      {/* Row A */}
+      <div className="marquee-mask overflow-hidden">
         <div className="flex gap-[30px] w-max animate-marquee">
           {[...rowA, ...rowA].map((src, i) => (
             <div
               key={i}
               className="w-[390px] h-[300px] rounded-b-2xl overflow-hidden shrink-0 shadow-inner bg-[#f4f2f0]"
             >
-              <img   style={{ padding: '20px' }} src={src} alt="" className="w-full h-full object-cover object-top rounded-[31px]" />
+              <img
+                src={src}
+                alt=""
+                className="w-full h-full object-cover object-top rounded-[31px] p-5"
+              />
             </div>
           ))}
         </div>
       </div>
-     <div className="marquee-mask overflow-hidden cursor-ew-resize">
+
+      {/* Row B */}
+      <div className="marquee-mask overflow-hidden">
         <div
           className="flex gap-[30px] w-max animate-marquee"
           style={{ animationDirection: 'reverse' }}
@@ -40,11 +48,16 @@ export default function Gallery() {
               key={i}
               className="w-[390px] h-[300px] rounded-t-2xl overflow-hidden shrink-0 shadow-inner bg-[#f4f2f0]"
             >
-              <img   style={{ padding: '20px' }} src={src} alt="" className="w-full h-full object-cover object-top rounded-[31px]" />
+              <img
+                src={src}
+                alt=""
+                className="w-full h-full object-cover object-top rounded-[31px] p-5"
+              />
             </div>
           ))}
         </div>
       </div>
+
     </section>
   )
 }
