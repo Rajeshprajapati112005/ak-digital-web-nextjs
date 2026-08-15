@@ -1,7 +1,5 @@
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 function escapeHtml(value: string) {
   return value.replace(/[&<>"']/g, (character) => {
     const entities: Record<string, string> = {
@@ -18,6 +16,19 @@ function escapeHtml(value: string) {
 
 export async function POST(request: Request) {
   try {
+    const apiKey = process.env.RESEND_API_KEY
+
+    if (!apiKey) {
+      console.error('RESEND_API_KEY is missing')
+
+      return Response.json(
+        { error: 'Email service is not configured.' },
+        { status: 500 }
+      )
+    }
+
+    const resend = new Resend(apiKey)
+
     const body = await request.json()
 
     const name = String(body.name || '')
@@ -44,22 +55,58 @@ export async function POST(request: Request) {
       subject: `New Enquiry: ${subject}`,
       html: `
         <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-        <p><strong>Phone:</strong> ${escapeHtml(phone || 'Not provided')}</p>
-        <p><strong>Subject:</strong> ${escapeHtml(subject)}</p>
-        <p><strong>Budget:</strong> $${escapeHtml(budget)}</p>
-        <p><strong>Message:</strong></p>
-        <p>${escapeHtml(message).replace(/\n/g, '<br />')}</p>
+
+        <p>
+          <strong>Name:</strong>
+          ${escapeHtml(name)}
+        </p>
+
+        <p>
+          <strong>Email:</strong>
+          ${escapeHtml(email)}
+        </p>
+
+        <p>
+          <strong>Phone:</strong>
+          ${escapeHtml(phone || 'Not provided')}
+        </p>
+
+        <p>
+          <strong>Subject:</strong>
+          ${escapeHtml(subject)}
+        </p>
+
+        <p>
+          <strong>Budget:</strong>
+          $${escapeHtml(budget)}
+        </p>
+
+        <p>
+          <strong>Message:</strong>
+        </p>
+
+        <p>
+          ${escapeHtml(message).replace(/\n/g, '<br />')}
+        </p>
       `,
     })
 
     if (error) {
-      return Response.json({ error: error.message }, { status: 500 })
+      console.error('Resend error:', error)
+
+      return Response.json(
+        { error: error.message },
+        { status: 500 }
+      )
     }
 
-    return Response.json({ success: true })
-  } catch {
+    return Response.json({
+      success: true,
+      message: 'Email sent successfully.',
+    })
+  } catch (error) {
+    console.error('Contact API error:', error)
+
     return Response.json(
       { error: 'Email send nahi ho saka. Please try again.' },
       { status: 500 }
