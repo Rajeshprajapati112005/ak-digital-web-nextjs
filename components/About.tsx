@@ -27,8 +27,8 @@ const team = [
 
 export default function About() {
   return (
-    <section id="about" className="about-section">
-
+    <section id="about" className="about-section bg-[#f5f1ee]">
+      <div className="container-px  ">
       {/* ABOUT LABEL */}
       <motion.div
         className="about-label-wrapper"
@@ -231,7 +231,7 @@ export default function About() {
         </motion.div>
 
       </div>
-
+    </div>
     </section>
   )
 }

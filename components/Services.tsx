@@ -68,17 +68,17 @@ export default function Services() {
   return (
     <section
       id="services"
-      className=" mx-auto py-16 px-6 bg-[#f5f1ee]"
+      className="  py-16 px-6 bg-[#f5f1ee]"
     >
 
       {/* ================================
           HEADING
       ================================= */}
-       <div className="container-px  text-center">
+       <div className="container-px  ">
       <div className="text-center max-w-3xl mx-auto">
 
         <p className="section-label justify-center flex">
-          <span className="bg-[#eef1f4] rounded-full px-4 py-1.5 inline-flex items-center gap-2">
+          <span className="bg-[#fff] rounded-full px-4 py-1.5 inline-flex items-center gap-2">
 
             <span className="w-6 h-6 bg-black text-white rounded-full flex items-center justify-center text-[10px]">
               i

@@ -1,12 +1,13 @@
 export default function Footer() {
   return (
-    <footer className="max-w-6xl mx-auto px-2 md:px-6 pb-6">
+    <footer className="px-2 md:px-6 pb-6 bg-[#f5f1ee]">
+       <div className="container-px  ">
       <div className="bg-black text-white rounded-[30px] p-10 md:p-14">
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10">
           <div>
             <h2 className="font-serif text-[90px] md:text-[120px] leading-[1.1] tracking-tight">
-              <span className="text-white">ak</span>
-              <span className="text-red"> digital web</span>
+              <span className="text-red">ak</span>
+              <span className="text-white "> digital web</span>
             </h2>
             <p className="text-white/90 mt-2 max-w-sm text-lg font-medium">
               The next big thing starts here, drop us a line and let&apos;s
@@ -50,6 +51,7 @@ export default function Footer() {
             <p className="text-white/90">Mon to Sat: 9.00am - 8.30pm</p>
           </div>
         </div>
+      </div>
       </div>
     </footer>
   )
