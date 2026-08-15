@@ -5,7 +5,7 @@ export default function Footer() {
       <div className="bg-black text-white rounded-[30px] p-10 md:p-14">
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10">
           <div>
-            <h2 className="font-serif text-[90px] md:text-[120px] leading-[1.1] tracking-tight">
+            <h2 className="font-serif text-[52px] md:text-[120px] leading-[1.1] tracking-tight">
               <span className="text-red">ak</span>
               <span className="text-white "> digital web</span>
             </h2>

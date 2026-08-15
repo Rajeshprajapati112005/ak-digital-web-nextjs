@@ -47,10 +47,12 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(0)
 
   return (
-    <section id="faq" className="max-w-3xl mx-auto py-16 px-6">
-      <div className="text-center mb-10">
+    <section id="faq" className="bg-[#f5f1ee] py-16 px-6">
+       <div className="container-px  ">
+        <div className='grid md:grid-cols-[2fr_2.2fr] gap-8 mt-12'>
+      <div className=" mb-10">
         <p className="section-label justify-center flex">
-          <span className="bg-[#eef1f4] rounded-full px-4 py-1.5">
+          <span className="bg-[#fff] rounded-full px-4 py-1.5">
             Frequently Asked Questions
           </span>
         </p>
@@ -68,10 +70,10 @@ export default function FAQ() {
         {faqs.map((item, i) => {
           const isOpen = open === i
           return (
-            <div key={item.q} className="bg-[#faf8f7] rounded-[30px] overflow-hidden">
+            <div key={item.q} className="bg-[#fff] rounded-[30px] overflow-hidden">
               <button
                 onClick={() => setOpen(isOpen ? null : i)}
-                className="w-full flex items-center justify-between text-left px-6 py-5 bg-[#f5f7f9]"
+                className="w-full flex items-center justify-between text-left px-6 py-5 bg-[#fff]"
               >
                 <h3 className="font-semibold text-[15px]">{item.q}</h3>
                 <motion.span
@@ -95,6 +97,8 @@ export default function FAQ() {
             </div>
           )
         })}
+      </div>
+      </div>
       </div>
     </section>
   )
