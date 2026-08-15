@@ -71,8 +71,8 @@ export default function Hero() {
         </motion.p>
 
         <motion.a
-          href="https://calendly.com/satvik-saksena05/30min?month=2026-01"
-          target="_blank"
+          href="#contact"
+        
           rel="noopener noreferrer"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
