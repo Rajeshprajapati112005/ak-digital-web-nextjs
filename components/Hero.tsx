@@ -72,7 +72,6 @@ export default function Hero() {
 
         <motion.a
           href="#contact"
-        
           rel="noopener noreferrer"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}

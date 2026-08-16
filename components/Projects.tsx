@@ -1,67 +1,332 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
+import Link from 'next/link'
+import { useEffect, useRef, useState } from 'react'
+import { motion } from 'framer-motion'
 
 const projects = [
-  { name: "Nimbus", tag: "Web Design", g: "from-indigo-400 to-blue-600" },
-  { name: "Kirana Cart", tag: "Web Design — Dashboard", g: "from-emerald-400 to-teal-600" },
-  { name: "Trackly", tag: "Branding", g: "from-sky-300 to-blue-400" },
-  { name: "PayNest", tag: "Web Design", g: "from-orange-400 to-red" },
-  { name: "EduSphere", tag: "Web Design & Branding", g: "from-zinc-700 to-zinc-900" },
-  { name: "GreenRoute", tag: "Web Design", g: "from-rose-300 to-pink-400" },
-];
+  'https://robertsproducts.com.au',
+  'https://readingbees.com.au',
+  'https://phasepacific.com',
+  'https://mpcolour.com.au',
+  'https://energypricesolutions.com.au',
+
+  'https://www.starstruckbysl.com/',
+  'https://createlw.cswebsites.com.au.cswebsites.com.au/',
+  'https://quattrospaces.com/',
+  'https://rajbajoria.com/',
+  'https://misterphoto.in/',
+  'https://carespheremedia.com/',
+  'https://carematicshealth.com/',
+  'https://daukay.com/',
+  'https://saahilpackersandmovers.com/',
+  'https://studio11pilates.com.au/',
+  'https://jycranes.com.au/',
+  'https://carematicshealth.com',
+  'https://www.elledecorstore.in/',
+  'https://krivansh.com/',
+  'https://swarnabrass.com/',
+  'https://flowersonplenty.com.au/',
+  'https://www.bombayshirts.com/',
+  'https://getmymettle.com/',
+  'https://rizebar.in/',
+  'https://prosserproperties.com.au/',
+  'https://www.darlodogs.com.au/',
+  'https://glutagen.com/',
+  'http://northsidecardiology.com.au/',
+  'https://3eye.com.au/',
+  'https://soxybeast.com.au/',
+  'https://evvictoria.au/',
+  'https://koravidevelopers.com/',
+  'https://northernsweeping.com.au/',
+  'https://www.hrcm.in/',
+  'https://adrachna.com/',
+  'https://highvisionrealty.co.in/',
+  'https://navchakra.com/',
+]
+
+function getWebsiteName(url: string) {
+  try {
+    return new URL(url)
+      .hostname
+      .replace(/^www\./, '')
+      .split('.')[0]
+      .replace(/[-_]/g, ' ')
+      .replace(/\b\w/g, (letter) => letter.toUpperCase())
+  } catch {
+    return 'Website'
+  }
+}
+
+function getDomain(url: string) {
+  try {
+    return new URL(url).hostname.replace(/^www\./, '')
+  } catch {
+    return url
+  }
+}
+
+function getScreenshot(url: string) {
+  return `https://s.wordpress.com/mshots/v1/${encodeURIComponent(
+    url
+  )}?w=1800`
+}
 
 export default function Projects() {
-  return (
-    <section id="work" className="mx-auto   py-24">
-      <div className="container-px mx-auto">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.6 }}
-        className="mb-14 text-center"
-      >
-        <h2 className="font-display  font-medium tracking-tight md:text[52px] text[40px]">
-          Don&rsquo;t trust our words,
-          <br />
-          trust our <span className="italic-accent text-red">work!</span>
-        </h2>
-      </motion.div>
+  const [visibleCount, setVisibleCount] = useState(12)
+  const loaderRef = useRef<HTMLDivElement | null>(null)
 
-      <div className="grid gap-6 sm:grid-cols-2">
-        {projects.map((p, i) => (
-          <motion.a
-            key={p.name}
-            href="#"
-             target="_blank"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.5, delay: (i % 2) * 0.1 }}
-            className="group block overflow-hidden rounded-2xl"
-          >
-            <div className={`relative h-64 overflow-hidden rounded-2xl bg-gradient-to-br ${p.g}`}>
-              <div className="absolute inset-0 flex items-center justify-center transition-transform duration-700 ease-out group-hover:scale-110">
-                <span className="font-display text-6xl font-semibold text-cream/90">
-                  {p.name[0]}
-                </span>
-              </div>
-              <div className="absolute inset-0 bg-ink/0 transition-colors duration-500 group-hover:bg-ink/10" />
-            </div>
-            <div className="mt-4 flex items-center justify-between px-1">
-              <div>
-                <p className="text-xs text-fog">{p.tag}</p>
-                <h3 className="font-display text-lg font-medium">{p.name}</h3>
-              </div>
-              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-line text-ink transition-all duration-300 group-hover:-translate-y-0.5 group-hover:border-red group-hover:text-red">
-                &nearr;
+  const visibleProjects = projects.slice(0, visibleCount)
+
+  useEffect(() => {
+    const loader = loaderRef.current
+
+    if (!loader) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (
+          entries[0].isIntersecting &&
+          visibleCount < projects.length
+        ) {
+          setVisibleCount((prev) =>
+            Math.min(prev + 12, projects.length)
+          )
+        }
+      },
+      {
+        rootMargin: '500px',
+      }
+    )
+
+    observer.observe(loader)
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [visibleCount])
+
+  return (
+    <main className="projects-page">
+
+      {/* TOP NAVIGATION */}
+
+      <div className="projects-topbar">
+
+        <Link
+          href="/"
+          className="projects-back-button"
+        >
+          <span className="projects-back-icon">
+            ←
+          </span>
+
+          <span>
+            Back to Home
+          </span>
+        </Link>
+
+      </div>
+
+      {/* MAIN CONTAINER */}
+
+      <div className="projects-container">
+
+        {/* HEADER */}
+
+        <motion.header
+          className="projects-header"
+          initial={{
+            opacity: 0,
+            y: 40,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 0.8,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        >
+
+          <div className="projects-heading-wrap">
+
+            <h1 className="mt-5 font-serif text-[36px] leading-tight tracking-tight text-black md:text-[70px]">
+              Websites we&apos;ve
+              <br />
+              <span>
+                built &amp; launched.
               </span>
-            </div>
-          </motion.a>
-        ))}
+            </h1>
+
+          </div>
+
+          <p className="projects-description">
+            A selection of digital experiences designed and
+            developed for businesses, brands and growing
+            companies.
+          </p>
+
+        </motion.header>
+
+
+        {/* PROJECTS */}
+
+        <div className="projects-list">
+
+          {visibleProjects.map((url, index) => {
+
+            const name = getWebsiteName(url)
+            const domain = getDomain(url)
+
+            return (
+              <motion.a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-card"
+                key={`${url}-${index}`}
+                initial={{
+                  opacity: 0,
+                  y: 70,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{
+                  once: true,
+                  margin: '-100px',
+                }}
+                transition={{
+                  duration: 0.75,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                whileHover={{
+                  y: -8,
+                }}
+              >
+
+                {/* PROJECT NUMBER */}
+
+                <div className="project-number">
+                  {String(index + 1).padStart(2, '0')}
+                </div>
+
+
+                {/* SCREENSHOT */}
+
+                <div className="project-image-wrapper">
+
+                  <div className="project-image">
+
+                    <img
+                      src={getScreenshot(url)}
+                      alt={`${name} website`}
+                      loading={
+                        index < 4
+                          ? 'eager'
+                          : 'lazy'
+                      }
+                    />
+
+                  </div>
+
+
+                  {/* DARK OVERLAY */}
+
+                  <div className="project-image-overlay" />
+
+
+                  {/* HOVER BUTTON */}
+
+                  <div className="project-overlay">
+
+                    <span>
+                      VIEW WEBSITE
+                    </span>
+
+                    <span className="project-arrow">
+                      ↗
+                    </span>
+
+                  </div>
+
+                </div>
+
+
+                {/* PROJECT INFO */}
+
+                <div className="project-info">
+
+                  <div className="project-info-left">
+
+                    <h2>
+                      {name}
+                    </h2>
+
+                    <p>
+                      {domain}
+                    </p>
+
+                  </div>
+
+
+                  <div className="project-link-arrow">
+                    ↗
+                  </div>
+
+                </div>
+
+              </motion.a>
+            )
+          })}
+
+        </div>
+
+
+        {/* INFINITE SCROLL TRIGGER */}
+
+        {visibleCount < projects.length && (
+          <div
+            ref={loaderRef}
+            className="projects-loader"
+          >
+
+            <span className="projects-loader-dot" />
+
+            <span>
+              Loading more projects
+            </span>
+
+          </div>
+        )}
+
+
+        {/* END */}
+
+        {visibleCount >= projects.length && (
+          <motion.div
+            className="projects-end"
+            initial={{
+              opacity: 0,
+            }}
+            whileInView={{
+              opacity: 1,
+            }}
+            viewport={{
+              once: true,
+            }}
+          >
+            <span>
+              You&apos;ve reached the end.
+            </span>
+          </motion.div>
+        )}
+
       </div>
-      </div>
-    </section>
-  );
+
+    </main>
+  )
 }

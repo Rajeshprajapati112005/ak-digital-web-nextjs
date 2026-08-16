@@ -5,6 +5,7 @@ import Testimonials from '@/components/Testimonials'
 import Logos from '@/components/Logos'
 import Stats from '@/components/Stats'
 import Portfolio from '@/components/Portfolio'
+
 import Services from '@/components/Services'
 import About from '@/components/About'
 import Contact from '@/components/Contact'
@@ -23,6 +24,7 @@ export default function Home() {
       <Logos />
       <Stats />
       <Portfolio />
+       
       <Services />
       <About />
       <Contact />

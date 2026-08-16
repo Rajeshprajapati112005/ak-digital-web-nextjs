@@ -1366,6 +1366,786 @@ body {
     margin: 0 auto;
 }
 
+.projects-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #f5f1ee;
+  color: #111;
+  overflow: hidden;
+}
+
+
+/* =========================================
+   TOP BAR
+========================================= */
+
+.projects-topbar {
+  width: min(1400px, calc(100% - 80px));
+  margin: 0 auto;
+
+  padding-top: 38px;
+  padding-bottom: 20px;
+}
+
+.projects-back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 10px 22px 10px 13px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.82);
+
+  color: #222;
+
+  text-decoration: none;
+
+  font-family: 'Urbanist', sans-serif;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  box-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.06);
+
+  backdrop-filter: blur(14px);
+
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.projects-back-button:hover {
+  transform: translateY(-3px);
+
+  background: #111;
+  color: #fff;
+
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.13);
+}
+
+.projects-back-icon {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #f1eeeb;
+
+  font-size: 20px;
+
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease;
+}
+
+.projects-back-button:hover
+.projects-back-icon {
+  background: rgba(255, 255, 255, 0.15);
+
+  transform: translateX(-3px);
+}
+
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.projects-container {
+  width: min(1400px, calc(100% - 80px));
+  margin: 0 auto;
+
+  padding-top: 55px;
+  padding-bottom: 140px;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.projects-header {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.2fr)
+    minmax(280px, 0.8fr);
+
+  align-items: end;
+
+  gap: 100px;
+
+  margin-bottom: 50px;
+}
+
+.projects-eyebrow {
+  display: inline-block;
+
+  margin-bottom: 24px;
+
+  font-family: 'Urbanist', sans-serif;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  letter-spacing: 0.22em;
+
+  color: #777;
+}
+
+.projects-title {
+  margin: 0;
+
+  font-family: 'Urbanist', sans-serif;
+
+  font-size:
+    clamp(58px, 7.5vw, 108px);
+
+  line-height: 0.9;
+
+  letter-spacing: -0.065em;
+
+  font-weight: 600;
+
+  color: #111;
+}
+
+.projects-title span {
+  color: #a29f9d;
+}
+
+.projects-description {
+  max-width: 430px;
+
+  margin: 0 0 7px auto;
+
+  font-family: 'Inter';
+
+  font-size: 18px;
+
+  line-height: 1.55;
+
+  color: #686563;
+}
+
+
+/* =========================================
+   PROJECT LIST
+========================================= */
+
+.projects-list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+}
+
+
+/* =========================================
+   PROJECT CARD
+========================================= */
+
+.project-card {
+  position: relative;
+
+  display: block;
+
+  width: 100%;
+
+  color: inherit;
+
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+
+/* =========================================
+   NUMBER
+========================================= */
+
+.project-number {
+    position: absolute;
+    z-index: 10;
+    top: -8px;
+    left: -11px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #0768e7;
+    color: #fff;
+    backdrop-filter: blur(15px);
+    font-family: 'Urbanist', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================
+   SCREENSHOT
+========================================= */
+
+.project-image-wrapper {
+  position: relative;
+
+  width: 100%;
+
+  height: 255px;
+
+  overflow: hidden;
+
+  border-radius: 20px;
+
+  background: #dedad6;
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.09);
+
+  isolation: isolate;
+}
+
+
+/*
+  Important:
+  contain = screenshot crop nahi hoga.
+*/
+
+.project-image {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background: #e5e1dd;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: contain;
+
+  object-position: top center;
+
+  transform:
+    scale(1);
+
+  transition:
+    transform 1s
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* =========================================
+   HOVER ZOOM
+========================================= */
+
+.project-card:hover
+.project-image img {
+  transform:
+    scale(1.045);
+}
+
+
+/* =========================================
+   IMAGE GRADIENT
+========================================= */
+
+.project-image-overlay {
+  position: absolute;
+
+  z-index: 2;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.02) 40%,
+      rgba(0, 0, 0, 0.58) 100%
+    );
+
+  opacity: 0.75;
+
+  transition:
+    opacity 0.5s ease;
+}
+
+.project-card:hover
+.project-image-overlay {
+  opacity: 0.95;
+}
+
+
+/* =========================================
+   VIEW WEBSITE BUTTON
+========================================= */
+
+.project-overlay {
+  position: absolute;
+
+  z-index: 5;
+
+  right: 28px;
+  bottom: 28px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding:10px 8px 10px 13px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 255, 255, 0.16);
+
+  backdrop-filter: blur(18px);
+
+  color: #fff;
+
+  font-family: 'Urbanist', sans-serif;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  opacity: 0;
+
+  transform:
+    translateY(14px);
+
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+
+
+.project-card:hover
+.project-overlay {
+  opacity: 1;
+
+  transform:
+    translateY(0);
+}
+
+.project-arrow {
+  width: 25px;
+  height: 25px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #fff;
+
+  color: #111;
+
+  font-size: 19px;
+}
+
+
+/* =========================================
+   PROJECT INFO
+========================================= */
+
+.project-info {
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-between;
+
+  gap: 30px;
+
+  padding:
+    24px
+    5px
+    0;
+}
+
+.project-info-left {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.project-category {
+  margin-bottom: 9px;
+
+  font-family: 'Urbanist', sans-serif;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.16em;
+
+  color: #999;
+}
+
+.project-info h2 {
+  margin: 0 0 8px;
+
+  font-family:
+    'Instrument Serif',
+    Georgia,
+    serif;
+
+  font-size: 26px;
+
+  line-height: 1;
+
+  font-weight: 400;
+
+  color: #111;
+}
+
+.project-info p {
+  margin: 0;
+
+  font-family: 'Urbanist', sans-serif;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  color: #777;
+}
+
+
+/* =========================================
+   ARROW
+========================================= */
+
+.project-link-arrow {
+  flex-shrink: 0;
+
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid #d5d0cc;
+
+  border-radius: 50%;
+
+  font-family: 'Urbanist', sans-serif;
+
+  font-size: 21px;
+
+  color: #111;
+
+  transition:
+    background 0.35s ease,
+    color 0.35s ease,
+    transform 0.45s
+      cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease;
+}
+
+.project-card:hover
+.project-link-arrow {
+  background: #111;
+
+  border-color: #111;
+
+  color: #fff;
+
+  transform:
+    rotate(45deg);
+}
+
+
+/* =========================================
+   LOADER
+========================================= */
+
+.projects-loader {
+  min-height: 140px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  font-family: 'Urbanist', sans-serif;
+
+  font-size: 13px;
+
+  color: #777;
+}
+
+.projects-loader-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #111;
+
+  animation:
+    projects-pulse 1.2s
+    infinite ease-in-out;
+}
+
+@keyframes projects-pulse {
+
+  0%,
+  100% {
+    transform: scale(0.6);
+
+    opacity: 0.35;
+  }
+
+  50% {
+    transform: scale(1);
+
+    opacity: 1;
+  }
+}
+
+
+/* =========================================
+   END
+========================================= */
+
+.projects-end {
+  padding-top: 50px;
+
+  text-align: center;
+
+  font-family: 'Urbanist', sans-serif;
+
+  font-size: 13px;
+
+  letter-spacing: 0.08em;
+
+  color: #999;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+
+  .projects-topbar,
+  .projects-container {
+    width:
+      min(
+        100% - 50px,
+        760px
+      );
+  }
+
+  .projects-header {
+    grid-template-columns: 1fr;
+
+    gap: 35px;
+
+    margin-bottom: 70px;
+  }
+
+  .projects-description {
+    margin: 0;
+
+    max-width: 560px;
+  }
+
+  .project-image-wrapper {
+    height: 270px;
+  }
+
+  .projects-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .projects-topbar {
+    width:
+      calc(100% - 28px);
+
+    padding-top: 20px;
+  }
+
+  .projects-container {
+    width:
+      calc(100% - 28px);
+
+    padding-top: 45px;
+
+    padding-bottom: 90px;
+  }
+
+
+  /* BACK BUTTON */
+
+  .projects-back-button {
+    padding:10px 22px 10px 13px;
+
+    font-size: 14px;
+  }
+
+  .projects-back-icon {
+    width: 30px;
+    height: 30px;
+
+    font-size: 18px;
+  }
+
+
+  /* HEADER */
+
+  .projects-header {
+    margin-bottom: 55px;
+
+    gap: 25px;
+  }
+
+  .projects-eyebrow {
+    font-size: 10px;
+
+    margin-bottom: 18px;
+  }
+
+  .projects-title {
+    font-size:
+      clamp(
+        48px,
+        14vw,
+        70px
+      );
+
+    line-height: 0.92;
+  }
+
+  .projects-description {
+    font-size: 16px;
+
+    line-height: 1.5;
+  }
+
+
+  /* PROJECT */
+
+  .projects-list {
+   display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .project-number {
+    top: 13px;
+    left: 13px;
+
+    width: 40px;
+    height: 40px;
+
+    font-size: 11px;
+  }
+
+  .project-image-wrapper {
+    height: 270px;
+
+    border-radius: 20px;
+  }
+
+  .project-image img {
+    object-fit: contain;
+  }
+
+
+  /* INFO */
+
+  .project-info {
+    padding:
+      18px
+      2px
+      0;
+
+    gap: 15px;
+  }
+
+  .project-category {
+    font-size: 9px;
+
+    margin-bottom: 7px;
+  }
+
+  .project-info h2 {
+    font-size: 31px;
+
+    margin-bottom: 6px;
+  }
+
+  .project-info p {
+    font-size: 12px;
+  }
+
+  .project-link-arrow {
+    width: 42px;
+    height: 42px;
+
+    font-size: 17px;
+  }
+
+
+  /* HOVER BUTTON HIDE */
+
+  .project-overlay {
+    display: none;
+  }
+
+}
+
 .container-px {
   @apply px-6 md:px-10 lg:px-16;
 }

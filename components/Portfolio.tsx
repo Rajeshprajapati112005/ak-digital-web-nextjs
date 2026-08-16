@@ -80,9 +80,25 @@ export default function Portfolio() {
               <p className="text-xs  text-neutral-500">{p.tag}</p>
               <p className="font-semibold font-serif  text-lg mt-0.5">{p.name}</p>
             </div>
+            
           </motion.a>
+          
         ))}
+        
       </div>
+       <motion.a
+          href="/projects"
+          rel="noopener noreferrer"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.45, duration: 0.5 }}
+          whileHover={{ scale: 1.04 }}
+          whileTap={{ scale: 0.97 }}
+          className="inline-block mt-7 bg-red text-white rounded-full px-6 py-3 font-medium text-[15px] shadow-lg"
+        >
+          View All Projects
+        </motion.a>
       </div>
     </section>
   )
