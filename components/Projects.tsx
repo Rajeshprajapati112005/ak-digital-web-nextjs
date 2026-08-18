@@ -10,7 +10,6 @@ const projects = [
   'https://phasepacific.com',
   'https://mpcolour.com.au',
   'https://energypricesolutions.com.au',
-
   'https://www.starstruckbysl.com/',
   'https://createlw.cswebsites.com.au.cswebsites.com.au/',
   'https://quattrospaces.com/',
@@ -22,7 +21,6 @@ const projects = [
   'https://saahilpackersandmovers.com/',
   'https://studio11pilates.com.au/',
   'https://jycranes.com.au/',
-  'https://carematicshealth.com',
   'https://www.elledecorstore.in/',
   'https://krivansh.com/',
   'https://swarnabrass.com/',
@@ -43,6 +41,21 @@ const projects = [
   'https://adrachna.com/',
   'https://highvisionrealty.co.in/',
   'https://navchakra.com/',
+
+  // New Projects
+  'https://truckerstoystore.com.au/',
+  'https://bamboobliss.com.au/',
+  'https://sportsapparel.cswebsites.com.au/',
+  'https://bellaeventandfurniturehire.com.au/',
+  'https://animalfriendlylife.com.au/',
+  'https://localarms.com.au/',
+  'https://breensfurniture.com.au/',
+  'https://ankahomes.com.au/',
+  'https://kubenest.com.au/',
+  'https://jaxtonic.com/',
+  'https://www.mst.com.au/',
+  'https://chiropractorepping.com.au/',
+  'https://mycarentals.com.au/',
 ]
 
 function getWebsiteName(url: string) {
