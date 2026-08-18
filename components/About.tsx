@@ -208,7 +208,7 @@ export default function About() {
           </div>
 
           <motion.a
-            href="mailto:elevenstudio.agency@gmail.com"
+            href="mailto:info@akdigitalweb.com"
             whileHover={{
               scale: 1.025,
             }}
