@@ -2,7 +2,6 @@
 
 const logosRowA = [
   '/l1.png',
-  '/l2.jpg',
   '/l3.png',
   '/l4.png',
   '/l5.jpg',
@@ -15,7 +14,6 @@ const logosRowB = [
   '/l9.png',
   '/l10.webp',
   '/l11.png',
-  '/l12.png',
   '/l13.png',
   '/l9.svg',
 ]
