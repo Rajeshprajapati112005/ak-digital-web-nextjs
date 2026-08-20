@@ -1,20 +1,20 @@
 'use client'
 
 const logosRowA = [
-  '/l1.png',
-  '/l3.png',
-  '/l4.png',
-  '/l5.jpg',
-  '/l6.png',
+  '/l1.webp',
+  '/l3.webp',
+  '/l4.webp',
+  '/l5.webp',
+  '/l6.webp',
 ]
 
 const logosRowB = [
-  '/l7.png',
-  '/l8.png',
-  '/l9.png',
+  '/l7.webp',
+  '/l8.webp',
+  '/l9.webp',
   '/l10.webp',
-  '/l11.png',
-  '/l13.png',
+  '/l11.webp',
+  '/l13.webp',
   '/l9.svg',
 ]
 

@@ -8,7 +8,7 @@ const testimonials = [
     role: 'Founder of Caresphere Media',
     quote:
       "I had a great experience working with Rajesh. He was professional, responsive, and delivered exactly what I needed. The website looks modern, loads quickly, and works perfectly across all devices. Communication throughout the project was excellent, and any changes or requests were handled promptly. His attention to detail and technical expertise made the entire process smooth and stress-free. ",
-    img: 'mohit.jpeg',
+    img: 'mohit.webp',
     rotate: 3,
   },
   {
@@ -16,7 +16,7 @@ const testimonials = [
     role: 'Founder of Adrachna',
     quote:
       "Working with AK Digital Web was a smooth and professional experience. Rajesh understood our requirements quickly and delivered a clean, modern website that matched our expectations perfectly. He was always available for updates and made the entire process simple and hassle-free. I’m very happy with the final result and would definitely recommend AK Digital Web for quality web development services.",
-    img: 'RS.jpeg',
+    img: 'RS.webp',
     rotate: -2,
   },
   {
@@ -24,7 +24,7 @@ const testimonials = [
     role: "Carematics Health",
     quote:
       "AK Digital Web delivered an excellent website for our healthcare business. They understood our requirements and created a clean, professional, and user-friendly website that makes it easy for patients to find the information they need. The communication was smooth, and every update was handled promptly. We’re very happy with the final result and highly recommend AK Digital Web.",
-    img: 'rahul.jpg',
+    img: 'rahul.webp',
     rotate: 2,
   },
   {
@@ -32,7 +32,7 @@ const testimonials = [
     role: 'Founder, Clicks Bazaar',
     quote:
       "Rajesh was a valuable part of our team at Clicks Bazaar. He consistently delivered high-quality web development work, handled projects with great attention to detail, and was always willing to take on new challenges. His technical skills, problem-solving ability, and commitment to deadlines made him a reliable team member. I would gladly recommend Rajesh to any organization looking for a skilled and dedicated web developer.",
-    img: 'ravi.jpg',
+    img: 'ravi.webp',
     rotate: -3,
   },
 ]

@@ -87,14 +87,14 @@ export default function Hero() {
 
       {/* Decorative graphics */}
       <motion.img
-        src="/left.png"
+        src="/left.webp"
         alt=""
         className="hidden md:block absolute w-[196px] -left-14 top-[146px] drop-shadow-lg pointer-events-none select-none"
         animate={{ y: [0, -12, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
       />
       <motion.img
-        src="right.png"
+        src="right.webp"
         alt=""
         className="hidden md:block absolute w-[204px] -right-7 top-[149px] drop-shadow-lg pointer-events-none select-none"
         animate={{ y: [0, 12, 0] }}

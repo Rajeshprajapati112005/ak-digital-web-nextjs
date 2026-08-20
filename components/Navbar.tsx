@@ -260,9 +260,9 @@ export default function Navbar() {
             handleMenuClick(e, 'home')
           }
         >
-          {/* Put your real logo at public/logo.png */}
+          {/* Put your real logo at public/logo.webp */}
           <img
-            src="logo.png"
+            src="logo.webp"
             alt="Eleven"
           />
         </a>

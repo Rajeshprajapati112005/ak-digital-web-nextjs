@@ -7,37 +7,37 @@ const projects = [
     name: 'Star Struckbysl',
     tag: 'Beauty & Cosmetics 💄',
     href: 'https://www.starstruckbysl.com/',
-    img: 'five.jpg',
+    img: 'five.webp',
   },
   {
     name: 'Bombay Shirts',
     tag: 'Clothing & Fashion 👕',
     href: 'https://www.bombayshirts.com/',
-    img: '4.png',
+    img: '4.webp',
   },
   {
     name: 'Raj Bajoria',
     tag: 'Business & Entrepreneurship 👔',
     href: 'https://rajbajoria.com/',
-    img: 'six.png',
+    img: 'six.webp',
   },
   {
     name: 'Mister Photo',
     tag: 'Photography & Videography 📸',
     href: 'https://misterphoto.in/',
-    img: '2.jpg',
+    img: '2.webp',
   },
   {
     name: 'Krivansh',
     tag: 'Jewellery & Accessories 💎',
     href: 'https://www.krivansh.com/',
-    img: '3.png',
+    img: '3.webp',
   },
   {
     name: 'Get My Mettle',
     tag: 'Health & Fitness Supplements 🥤',
     href: 'https://getmymettle.com/',
-    img: 'three.png',
+    img: 'three.webp',
   },
 ]
 

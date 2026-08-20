@@ -69,7 +69,7 @@ export const metadata: Metadata = {
 
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/og-image.webp',
         width: 1200,
         height: 630,
         alt: 'AK Digital Web - Web Design & Development Agency',
@@ -85,7 +85,7 @@ export const metadata: Metadata = {
     description:
       'High-performing websites, eCommerce stores and digital experiences built for business growth.',
 
-    images: ['/og-image.jpg'],
+    images: ['/og-image.webp'],
   },
 
   category: 'technology',
